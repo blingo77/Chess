@@ -27,18 +27,37 @@ public:
 
 	void whiteMove() {
 
+		int pieceRow;
+		int pieceCol;
+		int moveRow;
+		int moveCol;
+
+		std::cout << "White Players Turn!" << std::endl;
+		std::cout << "Enter Row: ";
+		std::cin >> pieceRow;
+		std::cout << "Enter Colum: ";
+		std::cin >> pieceCol;
+		std::cout << "Now enter spot to move to! " << std::endl;
+		std:: cout << "Enter Row: ";
+		std::cin >> moveRow;
+		std::cout << "Enter Col to move: ";
+		std::cin >> moveCol;
+
+		board[moveRow][moveCol] = board[pieceRow][pieceCol];
+		board[pieceRow][pieceCol] = "-";
 
 	}
 	void run() {
 
 		drawBoard();
-		
+		if (wPlayerMove) {
+			whiteMove();
+		}
+		drawBoard();
 		
 	}
 
 private:
-	int rows = 8;
-	int cols = 8;
 	std::string board[8][8] = {{"Br", "Bk", "Bb", "BQ", "BK", "Bb", "Bk","Br"},
 								{"Bp", "Bp", "Bp", "Bp", "Bp", "Bp", "Bp","Bp"},
 								{"-", "-", "-", "-", "-", "-", "-","-"},
@@ -48,4 +67,5 @@ private:
 								{"Wp", "Wp", "Wp", "Wp", "Wp", "Wp", "Wp","Wp"},
 								{"Wr", "Wk", "Wb", "WQ", "WK", "Wb", "Wk","Wr"}};
 	int boardSize = sizeof(board)/sizeof(char);
+	bool wPlayerMove = true;
 };
