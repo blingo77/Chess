@@ -3,7 +3,6 @@
 class Chess {
 
 public:
-	bool running = true;
 
 	Chess(){
 		
@@ -33,19 +32,23 @@ public:
 		int moveCol;
 		bool validPiece = false;
 
-		std::cout << "White Players Turn!" << std::endl;
-		std::cout << "Enter Row: ";
-		std::cin >> pieceRow;
-		std::cout << "Enter Colum: ";
-		std::cin >> pieceCol;
+		while (!validPiece) {
+			std::cout << "White Players Turn!" << std::endl;
+			std::cout << "Enter Row: ";
+			std::cin >> pieceRow;
+			std::cout << "Enter Colum: ";
+			std::cin >> pieceCol;
 
-		std::string piece = board[pieceRow][pieceCol];
+			std::string piece = board[pieceRow][pieceCol];
 
-		for (int i = 0; i <= 0; i++) {
-			if (piece[i] != 'B') {
-				std::cout << "Not valid Piece";
+			if (piece[0] != 'W') {
+				std::cout << "Not a valid piece! " << std::endl;
+			}
+			else {
+				validPiece = true;
 			}
 		}
+		
 
 		std::cout << "Now enter spot to move to! " << std::endl;
 		std:: cout << "Enter Row: ";
@@ -53,22 +56,58 @@ public:
 		std::cout << "Enter Col to move: ";
 		std::cin >> moveCol;
 
-		
-
-		while (!validPiece) {
-		}
 
 		board[moveRow][moveCol] = board[pieceRow][pieceCol];
 		board[pieceRow][pieceCol] = "-";
 
 	}
+
+	void blackMove() {
+		int pieceRow;
+		int pieceCol;
+		int moveRow;
+		int moveCol;
+		bool validPiece = false;
+
+		while (!validPiece) {
+			std::cout << "Black Players Turn!" << std::endl;
+			std::cout << "Enter Row: ";
+			std::cin >> pieceRow;
+			std::cout << "Enter Colum: ";
+			std::cin >> pieceCol;
+
+			std::string piece = board[pieceRow][pieceCol];
+
+			if (piece[0] != 'B') {
+				std::cout << "Not a valid piece! " << std::endl;
+			}
+			else {
+				validPiece = true;
+			}
+		}
+
+
+		std::cout << "Now enter spot to move to! " << std::endl;
+		std::cout << "Enter Row: ";
+		std::cin >> moveRow;
+		std::cout << "Enter Col to move: ";
+		std::cin >> moveCol;
+
+
+		board[moveRow][moveCol] = board[pieceRow][pieceCol];
+		board[pieceRow][pieceCol] = "-";
+	}
 	void run() {
 
-		drawBoard();
-		if (wPlayerMove) {
+		while (running) {
+
+			drawBoard();
 			whiteMove();
+			drawBoard();
+			blackMove();
+
 		}
-		drawBoard();
+
 		
 	}
 
@@ -81,6 +120,8 @@ private:
 								{"-", "-", "-", "-", "-", "-", "-","-"},
 								{"Wp", "Wp", "Wp", "Wp", "Wp", "Wp", "Wp","Wp"},
 								{"Wr", "Wk", "Wb", "WQ", "WK", "Wb", "Wk","Wr"}};
+
 	int boardSize = sizeof(board)/sizeof(char);
+	bool running = true;
 	bool wPlayerMove = true;
 };
