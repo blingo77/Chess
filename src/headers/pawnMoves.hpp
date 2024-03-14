@@ -26,7 +26,25 @@ bool whitePawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 
 			board[moveRow][moveCol] = board[pieceRow][pieceCol];
 			board[pieceRow][pieceCol] = "-";
-			std::cout << "in kill func";
+			std::cout << "in right kill func";
+			return true;
+		}
+	}
+	else if (board[pieceRow - 1][pieceCol - 1] != "-") {
+		enemyPiece = board[pieceRow - 1][pieceCol - 1];
+		if (enemyPiece[0] == 'B' && board[moveRow][moveCol] != enemyPiece) {
+
+			/*
+			checks if enemy is in left diagnol, but if the move spot is not the enemy,
+			function will continue to move conditions
+			*/
+
+		}
+		else {
+
+			board[moveRow][moveCol] = board[pieceRow][pieceCol];
+			board[pieceRow][pieceCol] = "-";
+			std::cout << "in left kill func";
 			return true;
 		}
 	}

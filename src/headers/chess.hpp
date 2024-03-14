@@ -50,8 +50,6 @@ public:
 				pieceCol--;
 			} while (pieceRow < 1 || pieceRow > 8 && pieceCol < 1 || pieceCol > 8);
 			
-
-
 			piece = board[pieceRow][pieceCol];
 
 			if (piece[0] != 'W') {
@@ -80,8 +78,6 @@ public:
 			}
 			break;
 		}
-
-
 
 	}
 
