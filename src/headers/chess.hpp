@@ -31,17 +31,32 @@ public:
 		int pieceCol;
 		int moveRow;
 		int moveCol;
+		bool validPiece = false;
 
 		std::cout << "White Players Turn!" << std::endl;
 		std::cout << "Enter Row: ";
 		std::cin >> pieceRow;
 		std::cout << "Enter Colum: ";
 		std::cin >> pieceCol;
+
+		std::string piece = board[pieceRow][pieceCol];
+
+		for (int i = 0; i <= 0; i++) {
+			if (piece[i] != 'B') {
+				std::cout << "Not valid Piece";
+			}
+		}
+
 		std::cout << "Now enter spot to move to! " << std::endl;
 		std:: cout << "Enter Row: ";
 		std::cin >> moveRow;
 		std::cout << "Enter Col to move: ";
 		std::cin >> moveCol;
+
+		
+
+		while (!validPiece) {
+		}
 
 		board[moveRow][moveCol] = board[pieceRow][pieceCol];
 		board[pieceRow][pieceCol] = "-";
