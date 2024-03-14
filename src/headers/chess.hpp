@@ -76,7 +76,6 @@ public:
 			if (piece[1] == 'p') {
 				validMove = whitePawnMove(moveRow , moveCol, pieceRow , pieceCol , board);
 			}
-			break;
 		}
 
 	}
