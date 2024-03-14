@@ -82,8 +82,6 @@ public:
 		}
 
 
-		board[moveRow][moveCol] = board[pieceRow][pieceCol];
-		board[pieceRow][pieceCol] = "-";
 
 	}
 
@@ -133,8 +131,6 @@ public:
 			}
 		}
 
-		board[moveRow][moveCol] = board[pieceRow][pieceCol];
-		board[pieceRow][pieceCol] = "-";
 	}
 	void run() {
 
