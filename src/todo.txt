@@ -1,0 +1,7 @@
+TODO
+
+Setup class
+Draw Board
+Draw pieces on board
+set up moves 
+set up constraints
