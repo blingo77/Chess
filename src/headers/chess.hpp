@@ -1,4 +1,7 @@
 #include <iostream>
+#include <cctype>
+
+#include "pawnMoves.hpp";
 
 class Chess {
 
@@ -10,9 +13,10 @@ public:
 
 	void drawBoard() {
 
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
-				
+		std::cout << '\n';
+
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
 				if (board[i][j] == "-") {
 					std::cout << " " << board[i][j] << " ";
 					continue;
@@ -22,24 +26,33 @@ public:
 			}
 			std::cout << "\n";
 		}
+		std::cout << '\n';
 	}
 
 	void whiteMove() {
 
 		int pieceRow;
 		int pieceCol;
+		std::string piece;
 		int moveRow;
 		int moveCol;
 		bool validPiece = false;
+		bool validMove = false;
 
 		while (!validPiece) {
-			std::cout << "White Players Turn!" << std::endl;
-			std::cout << "Enter Row: ";
-			std::cin >> pieceRow;
-			std::cout << "Enter Colum: ";
-			std::cin >> pieceCol;
+			do {
+				std::cout << "White Players Turn!" << std::endl;
+				std::cout << "Enter Row: ";
+				std::cin >> pieceRow;
+				std::cout << "Enter Colum: ";
+				std::cin >> pieceCol;
+				pieceRow--;
+				pieceCol--;
+			} while (pieceRow < 1 || pieceRow > 8 && pieceCol < 1 || pieceCol > 8);
+			
 
-			std::string piece = board[pieceRow][pieceCol];
+
+			piece = board[pieceRow][pieceCol];
 
 			if (piece[0] != 'W') {
 				std::cout << "Not a valid piece! " << std::endl;
@@ -49,12 +62,24 @@ public:
 			}
 		}
 		
+		while(!validMove) {
 
-		std::cout << "Now enter spot to move to! " << std::endl;
-		std:: cout << "Enter Row: ";
-		std::cin >> moveRow;
-		std::cout << "Enter Col to move: ";
-		std::cin >> moveCol;
+			do {
+				std::cout << "Now enter spot to move to! " << std::endl;
+				std::cout << "Enter Row: ";
+				std::cin >> moveRow;
+				std::cout << "Enter Col to move: ";
+				std::cin >> moveCol;
+				moveRow--;
+				moveCol--;
+			} while (moveRow < 1 || moveRow > 8 && moveCol < 1 || moveCol > 8);
+
+
+			if (piece[1] == 'p') {
+				validMove = whitePawnMove(moveRow , moveCol, pieceRow , pieceCol , board);
+			}
+			break;
+		}
 
 
 		board[moveRow][moveCol] = board[pieceRow][pieceCol];
@@ -65,18 +90,24 @@ public:
 	void blackMove() {
 		int pieceRow;
 		int pieceCol;
+		std::string piece;
 		int moveRow;
 		int moveCol;
 		bool validPiece = false;
+		bool validMove = false;
 
 		while (!validPiece) {
-			std::cout << "Black Players Turn!" << std::endl;
-			std::cout << "Enter Row: ";
-			std::cin >> pieceRow;
-			std::cout << "Enter Colum: ";
-			std::cin >> pieceCol;
+			do {
+				std::cout << "Black Players Turn!" << std::endl;
+				std::cout << "Enter Row: ";
+				std::cin >> pieceRow;
+				std::cout << "Enter Colum: ";
+				std::cin >> pieceCol;
+				pieceRow--;
+				pieceCol--;
+			} while (pieceRow < 1 || pieceRow > 8 && pieceCol < 1 || pieceCol > 8);
 
-			std::string piece = board[pieceRow][pieceCol];
+			piece = board[pieceRow][pieceCol];
 
 			if (piece[0] != 'B') {
 				std::cout << "Not a valid piece! " << std::endl;
@@ -86,13 +117,21 @@ public:
 			}
 		}
 
+		while (!validMove) {
+			do {
+				std::cout << "Now enter spot to move to! " << std::endl;
+				std::cout << "Enter Row: ";
+				std::cin >> moveRow;
+				std::cout << "Enter Col to move: ";
+				std::cin >> moveCol;
+				moveRow--;
+				moveCol--;
+			} while (moveRow < 1 || moveRow > 8 && moveCol < 1 || moveCol > 8);
 
-		std::cout << "Now enter spot to move to! " << std::endl;
-		std::cout << "Enter Row: ";
-		std::cin >> moveRow;
-		std::cout << "Enter Col to move: ";
-		std::cin >> moveCol;
-
+			if (piece[1] == 'p') {
+				validMove = blackPawnMove(moveRow, moveCol, pieceRow, pieceCol, board);
+			}
+		}
 
 		board[moveRow][moveCol] = board[pieceRow][pieceCol];
 		board[pieceRow][pieceCol] = "-";
@@ -107,19 +146,18 @@ public:
 			blackMove();
 
 		}
-
-		
 	}
 
 private:
-	std::string board[8][8] = {{"Br", "Bk", "Bb", "BQ", "BK", "Bb", "Bk","Br"},
-								{"Bp", "Bp", "Bp", "Bp", "Bp", "Bp", "Bp","Bp"},
-								{"-", "-", "-", "-", "-", "-", "-","-"},
-								{"-", "-", "-", "-", "-", "-", "-","-"},
-								{"-", "-", "-", "-", "-", "-", "-","-"},
-								{"-", "-", "-", "-", "-", "-", "-","-"},
-								{"Wp", "Wp", "Wp", "Wp", "Wp", "Wp", "Wp","Wp"},
-								{"Wr", "Wk", "Wb", "WQ", "WK", "Wb", "Wk","Wr"}};
+	std::string board[9][9] = {{"Br", "Bk", "Bb", "BQ", "BK", "Bb", "Bk","Br", "1"},
+								{"Bp", "Bp", "Bp", "Bp", "Bp", "Bp", "Bp","Bp", "2"},
+								{"-", "-", "-", "-", "-", "-", "-","-", "3"},
+								{"-", "-", "-", "-", "-", "-", "-","-", "4"},
+								{"-", "-", "-", "-", "-", "-", "-","-", "5"},
+								{"-", "-", "-", "-", "-", "-", "-","-", "6"},
+								{"Wp", "Wp", "Wp", "Wp", "Wp", "Wp", "Wp","Wp", "7"},
+								{"Wr", "Wk", "Wb", "WQ", "WK", "Wb", "Wk","Wr", "8"},
+								{" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", ""}};
 
 	int boardSize = sizeof(board)/sizeof(char);
 	bool running = true;
