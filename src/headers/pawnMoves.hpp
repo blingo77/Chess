@@ -1,5 +1,11 @@
 #include <iostream>
 
+/*
+ PAWN STRUCTURE: 
+
+ CHECK RIGHT KILL -> CHECK LEFT KILL -> CHECK VALID MOVE -> CHECK FOR PIECES IN FRONT OF PAWN
+*/
+
 bool whitePawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::string board[][9]) {
 	
 	std::string enemyPiece;
