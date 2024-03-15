@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 
 /*
  PAWN STRUCTURE: 
@@ -9,19 +10,24 @@
 bool whitePawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::string board[][9]) {
 	
 	std::string enemyPiece;
+	int startRow = 6;
 
 	//check for valid kill
 	//RIGHT KILL
 	if (board[pieceRow - 1][pieceCol + 1] != "-"  && pieceCol + 1 < 8) {
 
 		enemyPiece = board[pieceRow - 1][pieceCol + 1];
+
 		if (enemyPiece[0] == 'B' && board[moveRow][moveCol] != enemyPiece) {
 			/*
 			checks if enemy is in right diagnol, but if the move spot is not the enemy, 
 			function will continue to move conditions
 			*/
+
 		}
-		else{
+		else if(enemyPiece[0] == 'B' && (moveRow == pieceRow - 1 || moveCol == pieceCol + 1)){
+
+			std::cout << board[moveRow][moveCol] << " " + enemyPiece << std::endl;
 
 			board[moveRow][moveCol] = board[pieceRow][pieceCol];
 			board[pieceRow][pieceCol] = "-";
@@ -40,7 +46,7 @@ bool whitePawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 			function will continue to move conditions
 			*/
 		}
-		else {
+		else if (enemyPiece[0] == 'B' && (moveRow == pieceRow - 1 || moveCol == pieceCol - 1)) {
 
 			board[moveRow][moveCol] = board[pieceRow][pieceCol];
 			board[pieceRow][pieceCol] = "-";
@@ -50,9 +56,17 @@ bool whitePawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 	}
 
 	// Check if they want to move to much forward and diagnol
-	if (pieceRow - moveRow > 2 || moveCol != pieceCol) {
-		std::cout << "Invalid Pawn Move!" << std::endl;
-		return false;
+	if (pieceRow == startRow) {
+		if (pieceRow - moveRow > 3 || moveCol != pieceCol) {
+			std::cout << "Invalid Pawn Move!" << std::endl;
+			return false;
+		}
+	}
+	else {
+		if (pieceRow - moveRow > 1 || moveCol != pieceCol) {
+			std::cout << "Invalid Pawn Move!" << std::endl;
+			return false;
+		}
 	}
 
 	//std::cout << board[pieceRow - 1][pieceCol] << std::endl;
@@ -80,6 +94,7 @@ bool whitePawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 bool blackPawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::string board[][9]) {
 
 	std::string enemyPiece;
+	int startRow = 1;
 
 	//check for valid kill
 	//RIGHT KILL
@@ -93,7 +108,7 @@ bool blackPawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 			function will continue to move conditions
 			*/
 		}
-		else {
+		else if (enemyPiece[0] == 'W' && (moveRow == pieceRow + 1 || moveCol == pieceCol + 1)) { //BUG HERE - pawn can take another pawn two tiles in front, when one is diagnol to it
 
 			board[moveRow][moveCol] = board[pieceRow][pieceCol];
 			board[pieceRow][pieceCol] = "-";
@@ -112,7 +127,7 @@ bool blackPawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 			function will continue to move conditions
 			*/
 		}
-		else {
+		else if (enemyPiece[0] == 'W' && (moveRow == pieceRow + 1 || moveCol == pieceCol - 1)) { //BUG HERE - pawn can take another pawn two tiles in front, when one is diagnol to it
 
 			board[moveRow][moveCol] = board[pieceRow][pieceCol];
 			board[pieceRow][pieceCol] = "-";
@@ -121,10 +136,19 @@ bool blackPawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 		}
 	}
 	// Check if they want to move to much forward and diagnol
-	if (moveRow - pieceRow > 2 || moveCol != pieceCol) {
-		std::cout << "Invalid Pawn Move!" << std::endl;
-		return false;
+	if (pieceRow == startRow) {
+		if (moveRow - pieceRow > 3 || moveCol != pieceCol) {
+			std::cout << "Invalid Pawn Move!" << std::endl;
+			return false;
+		}
 	}
+	else {
+		if (moveRow - pieceRow > 1 || moveCol != pieceCol) {
+			std::cout << "Invalid Pawn Move!" << std::endl;
+			return false;
+		}
+	}
+	
 	std::cout << board[pieceRow - 1][pieceCol] << std::endl;
 
 	// Checks if their is a piece in front of the pawn
@@ -136,11 +160,12 @@ bool blackPawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 	//std::cout << moveRow - moveCol;
 	// 
 	// Checks if their is a piece 2 spots in front of the pawn
-	if (board[pieceRow + 2][pieceCol] != "-" && moveRow - moveCol < 1) {
+	if (board[pieceRow + 2][pieceCol] != "-" && moveRow - pieceRow < 1) {
 		std::cout << "Their is a piece theress!" << std::endl;
 		return false;
 	}
 
+	std::cout << "here";
 	board[moveRow][moveCol] = board[pieceRow][pieceCol];
 	board[pieceRow][pieceCol] = "-";
 

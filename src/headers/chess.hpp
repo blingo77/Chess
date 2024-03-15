@@ -61,10 +61,11 @@ public:
 				validPiece = true;
 			}
 		}
-		
+
 		while(!validMove) {
 
 			do {
+
 				std::cout << "Now enter spot to move to! " << std::endl;
 				std::cout << "Enter Row: ";
 				std::cin >> moveRow;
@@ -72,8 +73,8 @@ public:
 				std::cin >> moveCol;
 				moveRow--;
 				moveCol--;
-			} while (moveRow < 1 || moveRow > 8 && moveCol < 1 || moveCol > 8);
 
+			} while (moveRow < 1 || moveRow > 8 && moveCol < 1 || moveCol > 8);
 
 			if (piece[1] == 'p') {
 				validMove = whitePawnMove(moveRow , moveCol, pieceRow , pieceCol , board);
@@ -82,7 +83,6 @@ public:
 				validMove = whiteKnightMove(moveRow, moveCol, pieceRow, pieceCol, board);
 			}
 		}
-
 	}
 
 	void blackMove() {
@@ -96,6 +96,7 @@ public:
 
 		while (!validPiece) {
 			do {
+
 				std::cout << "Black Players Turn!" << std::endl;
 				std::cout << "Enter Row: ";
 				std::cin >> pieceRow;
@@ -103,9 +104,8 @@ public:
 				std::cin >> pieceCol;
 				pieceRow--;
 				pieceCol--;
-				std::cout << pieceRow << std::endl << pieceCol;
 
-			} while (pieceRow < 0 || pieceRow > 8 && pieceCol < 1 || pieceCol > 8);
+			} while (pieceRow < 0 || pieceRow > 8 && pieceCol < 0 || pieceCol > 8);
 
 			piece = board[pieceRow][pieceCol];
 
@@ -115,11 +115,11 @@ public:
 			else {
 				validPiece = true; 
 			}
-			
 		}
 
 		while (!validMove) {
 			do {
+
 				std::cout << "Now enter spot to move to! " << std::endl;
 				std::cout << "Enter Row: ";
 				std::cin >> moveRow;
@@ -127,7 +127,8 @@ public:
 				std::cin >> moveCol;
 				moveRow--;
 				moveCol--;
-			} while (moveRow < 1 || moveRow > 8 && moveCol < 1 || moveCol > 8);
+
+			} while (moveRow < 0 || moveRow > 8 && moveCol < 0 || moveCol > 8);
 
 			if (piece[1] == 'p') {
 				validMove = blackPawnMove(moveRow, moveCol, pieceRow, pieceCol, board);
@@ -136,7 +137,6 @@ public:
 				validMove = blackKnightMove(moveRow, moveCol, pieceRow, pieceCol, board);
 			}
 		}
-
 	}
 	void run() {
 
