@@ -1,5 +1,7 @@
 TODO
 
+fix right kill functions when pawn has enemy diagnol of it, so that the pawn cant take another pawn infront of it
+
 Setup class
 Draw Board
 Draw pieces on board

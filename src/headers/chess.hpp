@@ -106,8 +106,9 @@ public:
 				std::cout << "Not a valid piece! " << std::endl;
 			}
 			else {
-				validPiece = true;
+				validPiece = true; 
 			}
+			
 		}
 
 		while (!validMove) {
