@@ -2,6 +2,7 @@
 #include <cctype>
 
 #include "pawnMoves.hpp";
+#include "knightMoves.hpp"
 
 class Chess {
 
@@ -48,6 +49,7 @@ public:
 				std::cin >> pieceCol;
 				pieceRow--;
 				pieceCol--;
+
 			} while (pieceRow < 1 || pieceRow > 8 && pieceCol < 1 || pieceCol > 8);
 			
 			piece = board[pieceRow][pieceCol];
@@ -76,6 +78,9 @@ public:
 			if (piece[1] == 'p') {
 				validMove = whitePawnMove(moveRow , moveCol, pieceRow , pieceCol , board);
 			}
+			else if (piece[1] == 'k') {
+				validMove = whiteKnightMove(moveRow, moveCol, pieceRow, pieceCol, board);
+			}
 		}
 
 	}
@@ -98,7 +103,9 @@ public:
 				std::cin >> pieceCol;
 				pieceRow--;
 				pieceCol--;
-			} while (pieceRow < 1 || pieceRow > 8 && pieceCol < 1 || pieceCol > 8);
+				std::cout << pieceRow << std::endl << pieceCol;
+
+			} while (pieceRow < 0 || pieceRow > 8 && pieceCol < 1 || pieceCol > 8);
 
 			piece = board[pieceRow][pieceCol];
 
@@ -124,6 +131,9 @@ public:
 
 			if (piece[1] == 'p') {
 				validMove = blackPawnMove(moveRow, moveCol, pieceRow, pieceCol, board);
+			}
+			else if (piece[1] == 'k') {
+				validMove = blackKnightMove(moveRow, moveCol, pieceRow, pieceCol, board);
 			}
 		}
 
