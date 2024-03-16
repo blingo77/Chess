@@ -57,7 +57,7 @@ bool whitePawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 
 	// Check if they want to move to much forward and diagnol
 	if (pieceRow == startRow) {
-		if (pieceRow - moveRow > 3 || moveCol != pieceCol) {
+		if (pieceRow - moveRow > 2 || moveCol != pieceCol) {
 			std::cout << "Invalid Pawn Move!" << std::endl;
 			return false;
 		}
@@ -137,7 +137,7 @@ bool blackPawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 	}
 	// Check if they want to move to much forward and diagnol
 	if (pieceRow == startRow) {
-		if (moveRow - pieceRow > 3 || moveCol != pieceCol) {
+		if (moveRow - pieceRow > 2 || moveCol != pieceCol) {
 			std::cout << "Invalid Pawn Move!" << std::endl;
 			return false;
 		}

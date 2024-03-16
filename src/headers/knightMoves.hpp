@@ -1,41 +1,63 @@
 #include <iostream>
+#include <cmath>
 
 bool whiteKnightMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::string board[][9]) {
 
 	std::string friendlyPiece = board[moveRow][moveCol];
+	int knightRow = abs(moveRow - pieceRow);
+	int knightCol = abs(moveCol - pieceCol);
 
 	std::cout << pieceRow - moveRow << std::endl;
 	std::cout << pieceCol - moveCol << std::endl;
 
 	// Checks if the move spot has a friendly piece on it
-	if (friendlyPiece[0] == 'W') {
+	if (friendlyPiece[0] != 'W') {
 
-		// Checks for a knight move to the left off of spawn tile
-		if ((pieceRow - moveRow != 2 || pieceCol - moveCol != 1) && (pieceRow - moveRow != 2 || pieceCol - moveCol != -1)) {
-			std::cout << "Invalid Knight move! " << std::endl;
+		//std::cout << "Valid knight move 1" << std::endl;
+
+		// Checks if the spot is a valid move spot
+		if (knightRow + knightCol == 3) {
+
+			//std::cout << "Valid knight move 2" << std:: endl;
+
+			board[moveRow][moveCol] = board[pieceRow][pieceCol];
+			board[pieceRow][pieceCol] = "-";
+
+			return true;
+		}
+		else {
+			std::cout << "Not a valid Knight move!" << std::endl;
 			return false;
 		}
 	}
 
-	board[moveRow][moveCol] = board[pieceRow][pieceCol];
-	board[pieceRow][pieceCol] = "-";
-
-	return true;
+	return false;
 }
 
 bool blackKnightMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::string board[][9]) {
 	
 	std::string friendlyPiece = board[moveRow][moveCol];
+	int knightRow = abs(moveRow - pieceRow);
+	int knightCol = abs(moveCol - pieceCol);
 
 	std::cout << pieceRow - moveRow << std::endl;
 	std::cout << pieceCol - moveCol << std::endl;
 
 	// Checks if the move spot has a friendly piece on it
-	if (friendlyPiece[0] == 'B') {
+	if (friendlyPiece[0] != 'B') {
 
-		// Checks for a knight move to the left off of spawn tile
-		if ((moveRow - pieceRow != 2 || pieceCol - moveCol != 1) && (pieceRow - moveRow != -2 || pieceCol - moveCol != -1)) {
-			std::cout << "Invalid Knight move! " << std::endl;
+		// Checks if the spot is a valid move spot
+		if (knightRow + knightCol == 3) {
+
+			//std::cout << "Valid knight move 2" << std:: endl;
+
+			board[moveRow][moveCol] = board[pieceRow][pieceCol];
+			board[pieceRow][pieceCol] = "-";
+
+			return true;
+		}
+		else {
+			std::cout << "Not a valid Knight move!" << std::endl;
 			return false;
 		}
 	}
