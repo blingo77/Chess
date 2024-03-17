@@ -7,8 +7,8 @@ bool whiteKnightMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::
 	int knightRow = abs(moveRow - pieceRow);
 	int knightCol = abs(moveCol - pieceCol);
 
-	std::cout << pieceRow - moveRow << std::endl;
-	std::cout << pieceCol - moveCol << std::endl;
+	//std::cout << pieceRow - moveRow << std::endl;
+	//std::cout << pieceCol - moveCol << std::endl;
 
 	// Checks if the move spot has a friendly piece on it
 	if (friendlyPiece[0] != 'W') {
@@ -30,6 +30,10 @@ bool whiteKnightMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::
 			return false;
 		}
 	}
+	else {
+		std::cout << "Their is a friendly piece there!" << std::endl;
+		return false;
+	}
 
 	return false;
 }
@@ -40,8 +44,8 @@ bool blackKnightMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::
 	int knightRow = abs(moveRow - pieceRow);
 	int knightCol = abs(moveCol - pieceCol);
 
-	std::cout << pieceRow - moveRow << std::endl;
-	std::cout << pieceCol - moveCol << std::endl;
+	//std::cout << pieceRow - moveRow << std::endl;
+	//std::cout << pieceCol - moveCol << std::endl;
 
 	// Checks if the move spot has a friendly piece on it
 	if (friendlyPiece[0] != 'B') {
@@ -61,8 +65,11 @@ bool blackKnightMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::
 			return false;
 		}
 	}
+	else {
+		std::cout << "There is a friendly piece there!" << std::endl;
+		return false;
+	}
 
-	board[moveRow][moveCol] = board[pieceRow][pieceCol];
-	board[pieceRow][pieceCol] = "-";
-	return true;
+
+	return false;
 }

@@ -3,6 +3,7 @@
 
 #include "pawnMoves.hpp";
 #include "knightMoves.hpp"
+#include "bishopMoves.hpp"
 
 class Chess {
 
@@ -82,6 +83,9 @@ public:
 			else if (piece[1] == 'k') {
 				validMove = whiteKnightMove(moveRow, moveCol, pieceRow, pieceCol, board);
 			}
+			else if (piece[1] == 'b') {
+				validMove = whiteBishopMove(moveRow, moveCol, pieceRow, pieceCol, board);
+			}
 		}
 	}
 
@@ -135,6 +139,9 @@ public:
 			}
 			else if (piece[1] == 'k') {
 				validMove = blackKnightMove(moveRow, moveCol, pieceRow, pieceCol, board);
+			}
+			else if (piece[1] == 'b') {
+				validMove = blackBishopMove(moveRow, moveCol, pieceRow, pieceCol, board);
 			}
 		}
 	}
