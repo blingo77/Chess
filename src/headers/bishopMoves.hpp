@@ -2,11 +2,11 @@
 
 bool whiteBishopMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::string board[][9]) {
 
-	std::string friendlyPiece = board[moveRow][moveCol];
+	std::string moveSpot = board[moveRow][moveCol];
 	int bishopRow = abs(moveRow - pieceRow);
 	int bishopCol = abs(moveCol - pieceCol);
 
-	if (friendlyPiece[0] != 'W') {
+	if (moveSpot[0] != 'W' && moveSpot[1] != 'K') {
 
 		//std::cout << "Valid knight move 1" << std::endl;
 
@@ -26,7 +26,7 @@ bool whiteBishopMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::
 		}
 	}
 	else {
-		std::cout << "Their is a friendly piece there!" << std::endl;
+		std::cout << "You Cannot Move There!" << std::endl;
 		return false;
 	}
 
