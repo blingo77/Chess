@@ -9,17 +9,18 @@ bool upperLeftCheck(int moveRow, int moveCol, int pieceRow, int pieceCol, std::s
 		std::cout << board[pieceRow - i][pieceCol - i] << std::endl;
 
 		// Checks if a piece is in the path of the moveSpot
-		if (board[pieceRow - i][pieceCol - i] != "-") {
+		if ((pieceRow - i == moveRow) && (pieceCol - i == moveCol)) {
+			return true;
+			break;
+		}
+		else if (board[pieceRow - i][pieceCol - i] != "-") {
 			std::cout << "bishop UL check function";
 			std::cout << board[pieceRow - i][pieceCol - i] << std::endl;
 			std::cout << "There is a piece in your way!" << std::endl;
 			return false;
 			break;
 		}
-		if ((pieceRow - i - 1 == moveRow) && (pieceCol - i - 1 == moveCol)) {
-			return true;
-			break;
-		}
+
 		i++;
 	}
 	return true;
@@ -34,17 +35,15 @@ bool upperRightCheck(int moveRow, int moveCol, int pieceRow, int pieceCol, std::
 		std::cout << board[pieceRow - i][pieceCol + i] << std::endl;
 		std::cout << board[pieceRow - i ][pieceCol + i ]   << std::endl;
 
-		if (board[pieceRow - i][pieceCol + i] != "-") {
+		if ((pieceRow - i == moveRow) && (pieceCol + i  == moveCol)) {
+			return true;
+			break;
+		}
+		else if (board[pieceRow - i][pieceCol + i] != "-") {
 			std::cout << "bishop UR check function";
 			std::cout << board[pieceRow - i][pieceCol + i] << std::endl;
 			std::cout << "There is a piece in your way!" << std::endl;
 			return false;
-			break;
-		}
-
-		// Checks if a piece is in the path of the moveSpot
-		if ((pieceRow - i - 1 == moveRow) && (pieceCol + i + 1 == moveCol)) {
-			return true;
 			break;
 		}
 
