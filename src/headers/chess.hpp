@@ -4,6 +4,7 @@
 #include "pawnMoves.hpp";
 #include "knightMoves.hpp"
 #include "bishopMoves.hpp"
+#include "rookMoves.hpp"
 
 class Chess {
 
@@ -86,6 +87,9 @@ public:
 			else if (piece[1] == 'b') {
 				validMove = whiteBishopMove(moveRow, moveCol, pieceRow, pieceCol, board);
 			}
+			else if (piece[1] == 'r') {
+				validMove = whiteRookMoves(moveRow, moveCol, pieceRow, pieceCol, board);
+			}
 		}
 	}
 
@@ -143,6 +147,9 @@ public:
 			else if (piece[1] == 'b') {
 				validMove = blackBishopMove(moveRow, moveCol, pieceRow, pieceCol, board);
 			}
+			else if (piece[1] == 'r') {
+				validMove = blackRookMoves(moveRow, moveCol, pieceRow, pieceCol, board);
+			}
 		}
 	}
 	void run() {
@@ -160,13 +167,13 @@ public:
 
 private:
 	std::string board[9][9] = {{"Br", "Bk", "Bb", "BQ", "BK", "Bb", "Bk","Br", "1"},
-								{"Bp", "Bp", "Bp", "Bp", "-", "Bp", "Bp","Bp", "2"},
+								{"Bp", "Bp", "Bp", "Bp", "Bp", "Bp", "Bp","Bp", "2"},
 								{"-", "-", "-", "-", "-", "-", "-","-", "3"},
-								{"-", "-", "Bp", "Wp", "-", "Wp", "Bp","-", "4"},
-								{"-", "-", "-", "Wp", "Bb", "Wp", "-","-", "5"},
+								{"-", "-", "-", "-", "-", "-", "-","-", "4"},
+								{"-", "-", "-", "-", "-", "-", "-","-", "5"},
 								{"-", "-", "-", "-", "-", "-", "-","-", "6"},
 								{"Wp", "Wp", "Wp", "Wp", "Wp", "Wp", "Wp","Wp", "7"},
-								{"Wr", "Wk", "Wb", "WQ", "WK", "-", "Wk","Wr", "8"},
+								{"Wr", "Wk", "Wb", "WQ", "WK", "Wb", "Wk","Wr", "8"},
 								{" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", ""}};
 
 	int boardSize = sizeof(board)/sizeof(char);
