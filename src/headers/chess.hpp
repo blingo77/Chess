@@ -161,7 +161,6 @@ public:
 
 			drawBoard();
 			blackMove();
-
 		}
 	}
 
