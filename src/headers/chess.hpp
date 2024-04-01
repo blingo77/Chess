@@ -76,7 +76,7 @@ public:
 				moveRow--;
 				moveCol--;
 
-			} while (moveRow < 1 || moveRow > 8 && moveCol < 1 || moveCol > 8);
+			} while (moveRow < 0 || moveRow > 8 && moveCol < 0 || moveCol > 8);
 
 			if (piece[1] == 'p') {
 				validMove = whitePawnMove(moveRow , moveCol, pieceRow , pieceCol , board);
@@ -157,16 +157,16 @@ public:
 		while (running) {
 
 			drawBoard();
-			blackMove();
+			whiteMove();
 
 			drawBoard();
-			whiteMove();
+			blackMove();
 
 		}
 	}
 
 private:
-	std::string board[9][9] = {{"Br", "Bk", "Bb", "BQ", "BK", "Bb", "Bk","Br", "1"},
+	std::string board[9][9] = {{"Br", "Bk", "Bb", "BQ", "Bp", "Bb", "Bk","Br", "1"},
 								{"Bp", "Bp", "Bp", "Bp", "Bp", "Bp", "Bp","Bp", "2"},
 								{"-", "-", "-", "-", "-", "-", "-","-", "3"},
 								{"-", "-", "-", "-", "-", "-", "-","-", "4"},
