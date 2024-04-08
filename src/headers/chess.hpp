@@ -67,7 +67,6 @@ public:
 		while(!validMove) {
 
 			do {
-
 				std::cout << "Now enter spot to move to! " << std::endl;
 				std::cout << "Enter Row: ";
 				std::cin >> moveRow;
