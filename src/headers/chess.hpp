@@ -92,7 +92,7 @@ public:
 				validMove = whiteRookMoves(moveRow, moveCol, pieceRow, pieceCol, board);
 			}
 			else if (piece[1] == 'Q') {
-				std::cout << "WQ Selected";
+				std::cout << "WQ Selected" << std::endl;
 				validMove = whiteQueenMoves(moveRow, moveCol, pieceRow, pieceCol, board);
 			}
 		}
@@ -176,8 +176,8 @@ private:
 	std::string board[9][9] = {{"Br", "Bk", "Bb", "BQ", "Bp", "Bb", "Bk","Br", "1"},
 								{"Bp", "Bp", "Bp", "Bp", "Bp", "Bp", "Bp","Bp", "2"},
 								{"-", "-", "-", "-", "-", "-", "-","-", "3"},
-								{"-", "-", "-", "-", "-", "-", "-","-", "4"},
-								{"-", "-", "-", "-", "-", "-", "-","-", "5"},
+								{"-", "-", "BQ", "-", "-", "Bp", "-","-", "4"},
+								{"-", "Wp", "-", "-", "WQ", "-", "Bp","-", "5"},
 								{"-", "-", "-", "-", "-", "-", "-","-", "6"},
 								{"Wp", "Wp", "Wp", "Wp", "Wp", "Wp", "Wp","Wp", "7"},
 								{"Wr", "Wk", "Wb", "WQ", "WK", "Wb", "Wk","Wr", "8"},
