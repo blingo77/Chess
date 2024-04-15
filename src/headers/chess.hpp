@@ -181,7 +181,7 @@ public:
 	}
 
 private:
-	std::string board[9][9] = {{"Br", "Bk", "Bb", "BQ", "Bp", "Bb", "Bk","Br", "1"},
+	std::string board[9][9] = {{"Br", "Bk", "Bb", "BQ", "BK", "Bb", "Bk","Br", "1"},
 								{"Bp", "Bp", "Bp", "Bp", "Bp", "Bp", "Bp","Bp", "2"},
 								{"-", "-", "-", "-", "-", "-", "-","-", "3"},
 								{"-", "-", "BQ", "-", "-", "Bp", "-","-", "4"},
