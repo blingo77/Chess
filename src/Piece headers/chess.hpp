@@ -7,7 +7,7 @@
 #include "rookMoves.hpp"
 #include "queenMoves.hpp"
 #include "kingMoves.hpp"
-#include "inCheck.hpp"
+#include "../check headers/inCheck.hpp"
 
 class Chess {
 
@@ -169,16 +169,27 @@ public:
 			}
 		}
 	}
+
 	void run() {
 
 		while (running) {
 
 			drawBoard();
-			whiteCheck(board);
+			// Checks if the white king is in check
+			while (true) {
+				if (whiteCheck(board)) {
+					break;
+				}
+			}
 			whiteMove();
 
 			drawBoard();
-			blackCheck(board);
+			// Checks if the black king is in check
+			while (true) {
+				if (blackCheck(board)) {
+					break;
+				}
+			}
 			blackMove();
 		}
 	}
