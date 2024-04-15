@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "headers/chess.hpp"
+#include "Piece headers/chess.hpp"
 
 int main() {
 

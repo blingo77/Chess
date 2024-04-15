@@ -175,21 +175,11 @@ public:
 		while (running) {
 
 			drawBoard();
-			// Checks if the white king is in check
-			while (true) {
-				if (whiteCheck(board)) {
-					break;
-				}
-			}
+			whiteCheck(board);
 			whiteMove();
 
 			drawBoard();
-			// Checks if the black king is in check
-			while (true) {
-				if (blackCheck(board)) {
-					break;
-				}
-			}
+			blackCheck(board);
 			blackMove();
 		}
 	}

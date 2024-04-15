@@ -1,6 +1,20 @@
 #include <iostream>
 
-bool pawnCheck(int kingRow, int kingCol) {
+bool pawnCheck(int kingRow, int kingCol, std::string board[][9]) {
+
+	// check diagnols one space ahead for a black pawn
+
+	std::string rightDiag = board[kingRow - 1][kingCol + 1];
+	std::string leftDiag = board[kingRow - 1][kingCol - 1];
+
+	std::cout << leftDiag << std::endl;
+
+	if (rightDiag == "Bp" || leftDiag == "Bp") {
+		return true;
+	}
+	else {
+		return false;
+	}
 
 	return true;
 }
@@ -13,19 +27,22 @@ bool whiteCheck(std::string board[][9]) {
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 9; j++) {
 			if (board[i][j] == "WK") {
-				kingRow = i + 1;
-				kingCol = j + 1;
+				kingRow = i;
+				kingCol = j;
 				break;
 			}
 		}
 	}
 
-	std::cout << kingRow << std::endl;
-	std::cout << kingCol << std::endl;
+	std::cout << kingRow  + 1<< std::endl;
+	std::cout << kingCol + 1<< std::endl;
 
-	if (pawnCheck(kingRow, kingCol)) {
+	if (pawnCheck(kingRow, kingCol, board)) {
 
 		return true;
+	}
+	else {
+		return false;
 	}
 
 	return true;
