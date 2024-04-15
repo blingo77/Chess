@@ -7,6 +7,7 @@
 #include "rookMoves.hpp"
 #include "queenMoves.hpp"
 #include "kingMoves.hpp"
+#include "inCheck.hpp"
 
 class Chess {
 
@@ -173,9 +174,11 @@ public:
 		while (running) {
 
 			drawBoard();
+			whiteCheck(board);
 			whiteMove();
 
 			drawBoard();
+			blackCheck(board);
 			blackMove();
 		}
 	}
@@ -184,11 +187,11 @@ private:
 	std::string board[9][9] = {{"Br", "Bk", "Bb", "BQ", "BK", "Bb", "Bk","Br", "1"},
 								{"Bp", "Bp", "Bp", "Bp", "Bp", "Bp", "Bp","Bp", "2"},
 								{"-", "-", "-", "-", "-", "-", "-","-", "3"},
-								{"-", "-", "-", "-", "-", "-", "-","-", "4"},
+								{"-", "-", "-", "-", "Bp", "-", "-","-", "4"},
 								{"-", "-", "-", "WK", "-", "-", "-","-", "5"},
 								{"-", "-", "-", "-", "-", "-", "-","-", "6"},
 								{"Wp", "Wp", "Wp", "Wp", "Wp", "Wp", "Wp","Wp", "7"},
-								{"Wr", "Wk", "Wb", "WQ", "WK", "Wb", "Wk","Wr", "8"},
+								{"Wr", "Wk", "Wb", "WQ", "-", "Wb", "Wk","Wr", "8"},
 								{" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", ""}};
 
 	int boardSize = sizeof(board)/sizeof(char);
