@@ -6,6 +6,7 @@
 #include "bishopMoves.hpp"
 #include "rookMoves.hpp"
 #include "queenMoves.hpp"
+#include "kingMoves.hpp"
 
 class Chess {
 
@@ -95,6 +96,10 @@ public:
 				std::cout << "WQ Selected" << std::endl;
 				validMove = whiteQueenMoves(moveRow, moveCol, pieceRow, pieceCol, board);
 			}
+			else if (piece[1] == 'K') {
+				std::cout << "WK Selected";
+				validMove = whiteKingMoves(moveRow, moveCol, pieceRow, pieceCol, board);
+			}
 		}
 	}
 
@@ -157,6 +162,9 @@ public:
 			}
 			else if (piece[1] == 'Q') {
 				validMove = blackQueenMoves(moveRow, moveCol, pieceRow, pieceCol, board);
+			}
+			else if (piece[1] == 'K') {
+				validMove = blackKingMoves(moveRow, moveCol, pieceRow, pieceCol, board);
 			}
 		}
 	}
