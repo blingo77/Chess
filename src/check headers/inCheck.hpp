@@ -1,18 +1,34 @@
 #include <iostream>
 
-bool pawnCheck(int kingRow, int kingCol, std::string board[][9]) {
+bool whitePawnPreCheck(int kingRow, int kingCol, std::string board[][9]) {
 
 	// check diagnols one space ahead for a black pawn
 
 	std::string rightDiag = board[kingRow - 1][kingCol + 1];
 	std::string leftDiag = board[kingRow - 1][kingCol - 1];
 
-	std::cout << leftDiag << std::endl;
-
 	if (rightDiag == "Bp" || leftDiag == "Bp") {
 
 		std::cout << "In check" << std::endl;
+		return true;
+	}
+	else {
+		return false;
+	}
 
+	return true;
+}
+
+bool blackPawnPreCheck(int kingRow, int kingCol, std::string board[][9]) {
+
+	// Checks diagnols for white pawns 
+
+	std::string rightDiag = board[kingRow + 1][kingCol + 1];
+	std::string leftDiag = board[kingRow + 1][kingCol - 1];
+
+	if (rightDiag == "Wp" || leftDiag == "Wp") {
+
+		std::cout << "Black Player Is In Check!" << std::endl;
 		return true;
 	}
 	else {
@@ -40,7 +56,7 @@ bool whiteCheck(std::string board[][9]) {
 	std::cout << kingRow  + 1<< std::endl;
 	std::cout << kingCol + 1<< std::endl;
 
-	if (pawnCheck(kingRow, kingCol, board)) {
+	if (whitePawnPreCheck(kingRow, kingCol, board)) {
 
 		return true;
 	}
@@ -59,12 +75,19 @@ bool blackCheck(std::string board[][9]) {
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 9; j++) {
 			if (board[i][j] == "BK") {
-				kingRow = i + 1;
-				kingCol = j + 1;
+				kingRow = i;
+				kingCol = j;
 				break;
 			}
 		}
 	}
 
-	return false;
+	if (blackPawnPreCheck(kingRow, kingCol, board)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+
+	return true;
 }

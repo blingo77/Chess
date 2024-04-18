@@ -38,5 +38,16 @@ bool whitePawnCheck(int moveRow, int moveCol, std::string board[][9]) {
 }
 
 bool blackPawnCheck(int moveRow, int moveCol, std::string board[][9]) {
+
+	std::string rightDiag = board[moveRow + 1][moveCol + 1];
+	std::string leftDiag = board[moveRow + 1][moveCol - 1];
+
+	if (rightDiag == "Wp" || leftDiag == "Wp") {
+		return true;
+	}
+	else {
+		return false;
+	}
+
 	return true;
 }

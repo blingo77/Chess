@@ -49,6 +49,15 @@ bool blackKingMoves(int moveRow, int moveCol, int pieceRow, int pieceCol, std::s
 	int kingRow = abs(moveRow - pieceRow);
 	int kingCol = abs(moveCol - pieceCol);
 
+	bool moveInCheck;
+
+	moveInCheck = blackPawnCheck(moveRow, moveCol, board);
+
+	if (moveInCheck) {
+		std::cout << "That move puts you in check!" << std::endl;
+		return false;
+	}
+
 	// Checks if the spot is friendly or king piece
 	if(moveSpot[0] != 'B' && moveSpot[1] != 'K') {
 		// Checks if the king has a valid move
