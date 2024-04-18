@@ -10,6 +10,9 @@ bool pawnCheck(int kingRow, int kingCol, std::string board[][9]) {
 	std::cout << leftDiag << std::endl;
 
 	if (rightDiag == "Bp" || leftDiag == "Bp") {
+
+		std::cout << "In check" << std::endl;
+
 		return true;
 	}
 	else {

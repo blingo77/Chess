@@ -172,11 +172,23 @@ public:
 
 	void run() {
 
+		bool inCheck = false;
+
 		while (running) {
 
 			drawBoard();
-			whiteCheck(board);
-			whiteMove();
+			inCheck = whiteCheck(board);
+			if (inCheck) {
+				while (inCheck) {
+					whiteMove();
+					inCheck = whiteCheck(board);
+
+				}
+			}
+			else {
+				whiteMove();
+
+			}
 
 			drawBoard();
 			blackCheck(board);
@@ -187,8 +199,8 @@ public:
 private:
 	std::string board[9][9] = {{"Br", "Bk", "Bb", "BQ", "BK", "Bb", "Bk","Br", "1"},
 								{"Bp", "Bp", "Bp", "Bp", "Bp", "Bp", "Bp","Bp", "2"},
-								{"-", "-", "-", "-", "-", "-", "-","-", "3"},
-								{"-", "-", "-", "-", "Bp", "-", "-","-", "4"},
+								{"-", "-", "-", "-", "Bp", "-", "-","-", "3"},
+								{"-", "-", "-", "-", "-", "-", "-","-", "4"},
 								{"-", "-", "-", "WK", "-", "-", "-","-", "5"},
 								{"-", "-", "-", "-", "-", "-", "-","-", "6"},
 								{"Wp", "Wp", "Wp", "Wp", "Wp", "Wp", "Wp","Wp", "7"},
