@@ -55,7 +55,7 @@ public:
 				pieceRow--;
 				pieceCol--;
 
-			} while (pieceRow < 1 || pieceRow > 8 && pieceCol < 1 || pieceCol > 8);
+			} while (pieceRow < 0 || pieceRow > 8 && pieceCol < 0 || pieceCol > 8);
 			
 			piece = board[pieceRow][pieceCol];
 
@@ -187,7 +187,6 @@ public:
 			}
 			else {
 				whiteMove();
-
 			}
 
 			drawBoard();
