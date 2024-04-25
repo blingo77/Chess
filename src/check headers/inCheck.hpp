@@ -93,7 +93,6 @@ bool blackCheck(std::string board[][9]) {
 		return true;
 	}
 	else if (blackBishopPreCheck(kingRow, kingCol, board)) {
-
 		return true;
 	}
 	else {

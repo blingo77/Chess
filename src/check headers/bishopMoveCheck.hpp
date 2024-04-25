@@ -10,6 +10,42 @@ TODO:
 - find if the moveRow and moveCol are in the attack path of a enemy bishop
 */
 
+bool lowerLeftMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, std::string board[][9]){
+
+	int i = 1;
+	
+	while (true) {
+
+		// Catches the bug of reading memeory address out of bounds
+		if (i < 0 || i >= 9) {
+			break;
+		}
+
+		// Checks if white bishop has black in check
+		if (board[bishopRow][bishopCol] == "Wb") {
+			board[moveRow][moveCol] = "BK";
+			if (board[bishopRow + i][bishopCol - i] == "BK") {
+				std::cout << "Black is in check! Move" << std::endl;
+				return true;
+				break;
+			}
+		}
+		// checks if black bishop has white in check
+		else if (board[bishopRow][bishopCol] == "Bb") {
+
+			if (board[bishopRow + i][bishopCol - i] == "WK") {
+				std::cout << "White is in check! Move" << std::endl;
+				return true;
+				break;
+			}
+		}
+
+		i++;
+	}
+
+	return false;
+}
+
 bool whiteBishopCheck(int moveRow, int moveCol, std::string board[][9]) {
 
 	int bishopRow;
@@ -20,11 +56,16 @@ bool whiteBishopCheck(int moveRow, int moveCol, std::string board[][9]) {
 			if (board[i][j] == "Bb") {
 				bishopRow = i;
 				bishopCol = j;
+
+				if (lowerLeftMoveCheck(moveRow, moveCol, bishopRow, bishopCol, board)) {
+
+					return true;
+				}
 			}
 		}
 	}
 
-	return true;
+	return false;
 }
 
 bool blackBishopCheck(int moveRow, int moveCol, std::string board[][9]) {
@@ -37,9 +78,14 @@ bool blackBishopCheck(int moveRow, int moveCol, std::string board[][9]) {
 			if (board[i][j] == "Bb") {
 				bishopRow = i;
 				bishopCol = j;
+
+				if (lowerLeftMoveCheck(moveRow, moveCol, bishopRow, bishopCol, board)) {
+
+					return true;
+				}
 			}
 		}
 	}
 
-	return true;
+	return false;
 }

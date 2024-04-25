@@ -13,7 +13,16 @@ bool lowerLeftKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol, 
 	while (true) {
 
 		// Catches the bug of reading memeory address out of bounds
-		if (i < 0 || i >= 9) {
+		if (i < 0 || i > 8) {
+			break;
+		}
+
+		// Makes sure that it isnt checking out of bounds
+		if (bishopRow - i < 0 || bishopRow + i > 8) {
+			break;
+		}
+
+		if (bishopCol - i < 0 || bishopCol + i > 8) {
 			break;
 		}
 
@@ -21,7 +30,7 @@ bool lowerLeftKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol, 
 		if (board[bishopRow][bishopCol] == "Wb") {
 
 			if (board[bishopRow + i][bishopCol - i] == "BK") {
-				std::cout << "Black is in check! Move" << std::endl;
+				std::cout << "Black is in check! Move 1" << std::endl;
 				return true;
 				break;
 			}
@@ -48,14 +57,23 @@ bool lowerRightKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol,
 
 	while (true) {
 
-		if (i < 0 || i >= 9) {
+		if (i < 0 || i > 8) {
+			break;
+		}
+
+		// Makes sure that it isnt checking out of bounds
+		if (bishopRow - i < 0 || bishopRow + i > 8) {
+			break;
+		}
+
+		if (bishopCol - i < 0 || bishopCol + i > 8) {
 			break;
 		}
 
 		// Checks if white bishop has black in check
 		if (board[bishopRow][bishopCol] == "Wb") {
 			if (board[bishopRow + i][bishopCol + i] == "BK") {
-				std::cout << "Black is in check! Move" << std::endl;
+				std::cout << "Black is in check! Move 2" << std::endl;
 				return true;
 				break;
 			}
@@ -80,14 +98,23 @@ bool upperLeftKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol, 
 
 	while (true) {
 
-		if (i < 0 || i >= 9) {
+		if (i < 0 || i > 8) {
+			break;
+		}
+
+		// Makes sure that it isnt checking out of bounds
+		if (bishopRow - i < 0 || bishopRow + i > 8) {
+			break;
+		}
+
+		if (bishopCol - i < 0 || bishopCol + i > 8) {
 			break;
 		}
 
 		// Checks if white bishop has black in check
 		if (board[bishopRow][bishopCol] == "Wb") {
 			if (board[bishopRow - i][bishopCol - i] == "BK") {
-				std::cout << "Black is in check! Move" << std::endl;
+				std::cout << "Black is in check! Move 3" << std::endl;
 				return true;
 				break;
 			}
@@ -112,14 +139,23 @@ bool upperRightKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol,
 
 	while (true) {
 
-		if (i < 0 || i >= 9) {
+		if (i < 0 || i > 8) {
+			break;
+		}
+
+		// Makes sure that it isnt checking out of bounds
+		if (bishopRow - i < 0 || bishopRow + i > 8) {
+			break;
+		}
+
+		if (bishopCol - i < 0 || bishopCol + i > 8) {
 			break;
 		}
 
 		// Checks if white bishop has black in check
 		if (board[bishopRow][bishopCol] == "Wb") {
 			if (board[bishopRow - i][bishopCol + i] == "BK") {
-				std::cout << "Black is in check! Move" << std::endl;
+				std::cout << "Black is in check! Move 4" << std::endl;
 				return true;
 				break;
 			}

@@ -14,6 +14,10 @@ bool whiteKingMoves(int moveRow, int moveCol, int pieceRow, int pieceCol, std::s
 		std::cout << "That move puts you in check " << std::endl;
 		return false;
 	}
+	if (whiteBishopCheck(moveRow, moveCol, board)) {
+		std::cout << "That move will put u in check" << std::endl;
+		return false;
+	}
 
 	// Checks if the spot is friendly or king piece
 	if (moveSpot[0] != 'W' && moveSpot[1] != 'K') {
