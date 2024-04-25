@@ -23,7 +23,6 @@ bool lowerLeftMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, 
 
 		// Checks if white bishop has black in check
 		if (board[bishopRow][bishopCol] == "Wb") {
-			board[moveRow][moveCol] = "BK";
 			if (board[bishopRow + i][bishopCol - i] == "BK") {
 				std::cout << "Black is in check! Move" << std::endl;
 				return true;
@@ -32,9 +31,11 @@ bool lowerLeftMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, 
 		}
 		// checks if black bishop has white in check
 		else if (board[bishopRow][bishopCol] == "Bb") {
+			board[moveRow][moveCol] = "WK";
 
 			if (board[bishopRow + i][bishopCol - i] == "WK") {
 				std::cout << "White is in check! Move" << std::endl;
+				board[moveRow][moveCol] = "-";
 				return true;
 				break;
 			}

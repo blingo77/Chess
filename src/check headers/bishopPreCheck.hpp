@@ -5,6 +5,10 @@
 	THE CHECK IS DONE BY FINDING THE BISHOPS POSITION THEN SEEING IF THE KING IS IN ONE OF ITS PATH
 
 	FUNCTION NAMES ARE RELATIVE TO THE BISHOPS POSITION
+
+	TODO:
+
+	-MAKE SURE THE THE CHECK BREAKS IF IT ENCOUNTERS A PIECE THAT ISNT A KING
 */
 
 bool lowerLeftKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol, std::string board[][9]) {
@@ -13,18 +17,19 @@ bool lowerLeftKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol, 
 	while (true) {
 
 		// Catches the bug of reading memeory address out of bounds
-		if (i < 0 || i > 8) {
+		if (i < 0 || i > 9) {
 			break;
 		}
-
+	
 		// Makes sure that it isnt checking out of bounds
-		if (bishopRow - i < 0 || bishopRow + i > 8) {
+		if (bishopRow + i < 0 || bishopRow + i > 9) {
 			break;
 		}
 
-		if (bishopCol - i < 0 || bishopCol + i > 8) {
+		if (bishopCol - i < 0 || bishopCol - i > 9) {
 			break;
 		}
+		
 
 		// Checks if white bishop has black in check
 		if (board[bishopRow][bishopCol] == "Wb") {
@@ -62,14 +67,16 @@ bool lowerRightKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol,
 		}
 
 		// Makes sure that it isnt checking out of bounds
-		if (bishopRow - i < 0 || bishopRow + i > 8) {
+		if (bishopRow + i < 0 || bishopRow + i > 8) {
+			std::cout << "Break 1" << std::endl;
 			break;
 		}
 
-		if (bishopCol - i < 0 || bishopCol + i > 8) {
+		if (bishopCol + i < 0 || bishopCol + i > 8) {
+			std::cout << "Break 2" << std::endl;
 			break;
 		}
-
+	
 		// Checks if white bishop has black in check
 		if (board[bishopRow][bishopCol] == "Wb") {
 			if (board[bishopRow + i][bishopCol + i] == "BK") {
@@ -103,11 +110,11 @@ bool upperLeftKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol, 
 		}
 
 		// Makes sure that it isnt checking out of bounds
-		if (bishopRow - i < 0 || bishopRow + i > 8) {
+		if (bishopRow - i < 0 || bishopRow - i > 8) {
 			break;
 		}
 
-		if (bishopCol - i < 0 || bishopCol + i > 8) {
+		if (bishopCol - i < 0 || bishopCol - i > 8) {
 			break;
 		}
 
