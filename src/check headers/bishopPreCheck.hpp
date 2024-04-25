@@ -1,22 +1,136 @@
 #include <iostream>
 #include <vector>
 
-bool lowerLeftKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol, std::string board[][9]) {
+/*
+	THE CHECK IS DONE BY FINDING THE BISHOPS POSITION THEN SEEING IF THE KING IS IN ONE OF ITS PATH
 
-	// FIND A WAY TO CHECK BOTH BLACK AND WHITE KING
+	FUNCTION NAMES ARE RELATIVE TO THE BISHOPS POSITION
+*/
+
+bool lowerLeftKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol, std::string board[][9]) {
 
 	int i = 1;
 	while (true) {
 
 		// Catches the bug of reading memeory address out of bounds
-		if (i < 0 || i > 9) {
+		if (i < 0 || i >= 9) {
 			break;
 		}
 
-		if (board[bishopRow + i][bishopCol - i] == "WK") {
-			std::cout << "You are in check! MOVE" << std::endl;
-			return true;
+		// Checks if white bishop has black in check
+		if (board[bishopRow][bishopCol] == "Wb") {
+
+			if (board[bishopRow + i][bishopCol - i] == "BK") {
+				std::cout << "Black is in check! Move" << std::endl;
+				return true;
+				break;
+			}
+		}
+		// checks if black bishop has white in check
+		else if (board[bishopRow][bishopCol] == "Bb") {
+
+			if (board[bishopRow + i][bishopCol - i] == "WK") {
+				std::cout << "White is in check! Move" << std::endl;
+				return true;
+				break;
+			}
+		}
+
+		i++;
+	}
+
+	return false;
+}
+
+bool lowerRightKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol, std::string board[][9]){
+
+	int i = 1;
+
+	while (true) {
+
+		if (i < 0 || i >= 9) {
 			break;
+		}
+
+		// Checks if white bishop has black in check
+		if (board[bishopRow][bishopCol] == "Wb") {
+			if (board[bishopRow + i][bishopCol + i] == "BK") {
+				std::cout << "Black is in check! Move" << std::endl;
+				return true;
+				break;
+			}
+		}
+		// checks if black bishop has white in check
+		else if (board[bishopRow][bishopCol] == "Bb") {
+			if (board[bishopRow + i][bishopCol + i] == "WK") {
+				std::cout << "White is in check! Move" << std::endl;
+				return true;
+				break;
+			}
+		}
+		i++;
+	}
+
+	return false;
+}
+
+bool upperLeftKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol, std::string board[][9]) {
+
+	int i = 1;
+
+	while (true) {
+
+		if (i < 0 || i >= 9) {
+			break;
+		}
+
+		// Checks if white bishop has black in check
+		if (board[bishopRow][bishopCol] == "Wb") {
+			if (board[bishopRow - i][bishopCol - i] == "BK") {
+				std::cout << "Black is in check! Move" << std::endl;
+				return true;
+				break;
+			}
+		}
+		// checks if black bishop has white in check
+		else if (board[bishopRow][bishopCol] == "Bb") {
+			if (board[bishopRow - i][bishopCol - i] == "WK") {
+				std::cout << "White is in check! Move" << std::endl;
+				return true;
+				break;
+			}
+		}
+		i++;
+	}
+
+	return false;
+}
+
+bool upperRightKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol, std::string board[][9]) {
+
+	int i = 1;
+
+	while (true) {
+
+		if (i < 0 || i >= 9) {
+			break;
+		}
+
+		// Checks if white bishop has black in check
+		if (board[bishopRow][bishopCol] == "Wb") {
+			if (board[bishopRow - i][bishopCol + i] == "BK") {
+				std::cout << "Black is in check! Move" << std::endl;
+				return true;
+				break;
+			}
+		}
+		// checks if black bishop has white in check
+		else if (board[bishopRow][bishopCol] == "Bb") {
+			if (board[bishopRow - i][bishopCol + i] == "WK") {
+				std::cout << "White is in check! Move" << std::endl;
+				return true;
+				break;
+			}
 		}
 		i++;
 	}
@@ -36,6 +150,18 @@ bool whiteBishopPreCheck(int kingRow, int kingCol, std::string board[][9]) {
 				bishopCol = j;
 
 				if (lowerLeftKingCheck(bishopRow, bishopCol, kingRow, kingCol, board)) {
+
+					return true;
+				}
+				else if (lowerRightKingCheck(bishopRow, bishopCol, kingRow, kingCol, board)) {
+
+					return true;
+				}
+				else if (upperLeftKingCheck(bishopRow, bishopCol, kingRow, kingCol, board)) {
+
+					return true;
+				}
+				else if (upperRightKingCheck(bishopRow, bishopCol, kingRow, kingCol, board)) {
 
 					return true;
 				}
@@ -59,6 +185,18 @@ bool blackBishopPreCheck(int kingRow, int kingCol, std::string board[][9]) {
 				bishopCol = j;
 
 				if (lowerLeftKingCheck(bishopRow, bishopCol, kingRow, kingCol, board)) {
+
+					return true;
+				}
+				else if (lowerRightKingCheck(bishopRow, bishopCol, kingRow, kingCol, board)) {
+
+					return true;
+				}
+				else if (upperLeftKingCheck(bishopRow, bishopCol, kingRow, kingCol, board)) {
+
+					return true;
+				}
+				else if (upperRightKingCheck(bishopRow, bishopCol, kingRow, kingCol, board)) {
 
 					return true;
 				}
