@@ -92,6 +92,10 @@ bool blackCheck(std::string board[][9]) {
 	if (blackPawnPreCheck(kingRow, kingCol, board)) {
 		return true;
 	}
+	else if (blackBishopPreCheck(kingRow, kingCol, board)) {
+
+		return true;
+	}
 	else {
 		return false;
 	}

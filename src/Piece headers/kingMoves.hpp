@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "../check headers/kingMoveCheck.hpp"
+#include "../check headers//bishopMoveCheck.hpp"
 
 bool whiteKingMoves(int moveRow, int moveCol, int pieceRow, int pieceCol, std::string board[][9]) {
 
@@ -9,12 +10,8 @@ bool whiteKingMoves(int moveRow, int moveCol, int pieceRow, int pieceCol, std::s
 	int kingRow = abs(moveRow - pieceRow);
 	int kingCol = abs(moveCol - pieceCol);
 
-	bool moveInCheck;
-
-	moveInCheck = whitePawnCheck(moveRow, moveCol, board);
-
-	if (moveInCheck) {
-		std::cout << "That move puts you in check" << std::endl;
+	if (whitePawnCheck(moveRow, moveCol, board)) {
+		std::cout << "That move puts you in check " << std::endl;
 		return false;
 	}
 
@@ -49,11 +46,7 @@ bool blackKingMoves(int moveRow, int moveCol, int pieceRow, int pieceCol, std::s
 	int kingRow = abs(moveRow - pieceRow);
 	int kingCol = abs(moveCol - pieceCol);
 
-	bool moveInCheck;
-
-	moveInCheck = blackPawnCheck(moveRow, moveCol, board);
-
-	if (moveInCheck) {
+	if (blackPawnCheck(moveRow, moveCol, board)) {
 		std::cout << "That move puts you in check!" << std::endl;
 		return false;
 	}
