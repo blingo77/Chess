@@ -22,13 +22,15 @@ public:
 		std::cout << '\n';
 
 		for (int i = 0; i < 9; i++) {
+			std::cout << "---------------------------------" << std::endl;
 			for (int j = 0; j < 9; j++) {
 				if (board[i][j] == "-") {
-					std::cout << " " << board[i][j] << " ";
+					std::cout << "| " << board[i][j] << " ";
 					continue;
 				}
-
-				std::cout << board[i][j] << " ";
+				else {
+					std::cout << "|" << board[i][j] << " ";
+				}
 			}
 			std::cout << "\n";
 		}
