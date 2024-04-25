@@ -8,7 +8,7 @@
 
 	TODO:
 
-	-MAKE SURE THE THE CHECK BREAKS IF IT ENCOUNTERS A PIECE THAT ISNT A KING
+	-MAKE SURE THE THE CHECK BREAKS IF IT ENCOUNTERS A PIECE THAT ISNT A KING - Test examples on lines 44 & 60
 */
 
 bool lowerLeftKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol, std::string board[][9]) {
@@ -22,11 +22,11 @@ bool lowerLeftKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol, 
 		}
 	
 		// Makes sure that it isnt checking out of bounds
-		if (bishopRow + i < 0 || bishopRow + i > 9) {
+		if (bishopRow + i < 0 || bishopRow + i > 8) {
 			break;
 		}
 
-		if (bishopCol - i < 0 || bishopCol - i > 9) {
+		if (bishopCol - i < 0 || bishopCol - i > 8) {
 			break;
 		}
 		
@@ -34,18 +34,32 @@ bool lowerLeftKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol, 
 		// Checks if white bishop has black in check
 		if (board[bishopRow][bishopCol] == "Wb") {
 
+			std::string notKingPiece = board[bishopRow + i][bishopCol - i];
+
 			if (board[bishopRow + i][bishopCol - i] == "BK") {
 				std::cout << "Black is in check! Move 1" << std::endl;
 				return true;
+				break;
+			}
+			// Checks if the path has another piece in it
+			else if ((notKingPiece[1] != 'K' && notKingPiece[0] == 'W') || (notKingPiece[1] != 'K' && notKingPiece[0] == 'B')) {
+				return false;
 				break;
 			}
 		}
 		// checks if black bishop has white in check
 		else if (board[bishopRow][bishopCol] == "Bb") {
 
+			std::string notKingPiece = board[bishopRow + i][bishopCol - i];
+
 			if (board[bishopRow + i][bishopCol - i] == "WK") {
 				std::cout << "White is in check! Move" << std::endl;
 				return true;
+				break;
+			}
+			// Checks if the path has another piece in it
+			else if ((notKingPiece[1] != 'K' && notKingPiece[0] == 'W') || (notKingPiece[1] != 'K' && notKingPiece[0] == 'B')) {
+				return false;
 				break;
 			}
 		}
