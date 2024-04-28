@@ -100,7 +100,7 @@ public:
 				validMove = whiteQueenMoves(moveRow, moveCol, pieceRow, pieceCol, board);
 			}
 			else if (piece[1] == 'K') {
-				std::cout << "WK Selected";
+				std::cout << "WK Selected" << std::endl;
 				validMove = whiteKingMoves(moveRow, moveCol, pieceRow, pieceCol, board);
 			}
 		}
@@ -174,17 +174,19 @@ public:
 
 	void run() {
 
-		bool inCheck = false;
+		bool whiteInCheck = false;
+		bool blackInCheck = false;
 
 		while (running) {
 
 			drawBoard();
-			inCheck = whiteCheck(board);
-			if (inCheck) {
-				while (inCheck) {
-					whiteMove();
-					inCheck = whiteCheck(board);
+			whiteInCheck = whiteCheck(board);
+			if (whiteInCheck) {
 
+				while (whiteInCheck) {
+
+					whiteMove();
+					whiteInCheck = whiteCheck(board);
 				}
 			}
 			else {
@@ -192,18 +194,28 @@ public:
 			}
 
 			drawBoard();
-			blackCheck(board);
-			blackMove();
+			blackInCheck = blackCheck(board);
+			if (blackInCheck) {
+
+				while (blackInCheck) {
+
+					blackMove();
+					blackInCheck = blackCheck(board);
+				}
+			}
+			else {
+				blackMove();
+			}
 		}
 	}
 
 private:
 	std::string board[9][9] = {{"Br", "Bk", "Bb", "BQ", "BK", "Bb", "Bk","Br", "1"},
 								{"BK", "Bp", "Bp", "Bp", "Bp", "Bp", "Bp","Bp", "2"},
-								{"-", "-", "-", "-", "-", "-", "-","-", "3"},
-								{"-", "-", "-", "-", "Wb", "-", "-","-", "4"},
+								{"-", "-", "-", "-", "-", "-", "Bb","-", "3"},
+								{"-", "-", "-", "-", "WK", "-", "-","-", "4"},
 								{"-", "-", "-", "-", "-", "-", "-","-", "5"},
-								{"-", "-", "BK", "-", "-", "-", "-","-", "6"},
+								{"-", "-", "-", "-", "-", "-", "-","-", "6"},
 								{"Wp", "-", "Wp", "-", "Wp", "Wp", "Wp","Wp", "7"},
 								{"Wr", "Wk", "Wb", "WQ", "WK", "Wb", "Wk","Wr", "8"},
 								{" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", ""}};

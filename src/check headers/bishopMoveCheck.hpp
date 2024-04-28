@@ -34,7 +34,7 @@ bool lowerLeftMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, 
 			board[moveRow][moveCol] = "WK";
 
 			if (board[bishopRow + i][bishopCol - i] == "WK") {
-				std::cout << "White is in check! Move" << std::endl;
+				//std::cout << "White is in check! Move" << std::endl;
 				board[moveRow][moveCol] = "-";
 				return true;
 				break;
