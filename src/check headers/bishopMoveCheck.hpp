@@ -10,6 +10,147 @@ TODO:
 - find if the moveRow and moveCol are in the attack path of a enemy bishop
 */
 
+bool upperRightMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, std::string board[][9]) {
+
+	int i = 1;
+
+	while (true) {
+
+		// Catches the bug of reading memeory address out of bounds
+		if (i < 0 || i >= 9) {
+			break;
+		}
+
+		// Checks if white bishop has black in check
+		if (board[bishopRow][bishopCol] == "Wb") {
+
+			board[moveRow][moveCol] = "WK";
+
+			if (board[bishopRow - i][bishopCol + i] == "BK") {
+
+				std::cout << "Black is in check! Move" << std::endl;
+				board[moveRow][moveCol] = "-";
+				return true;
+				break;
+			}
+			board[moveRow][moveCol] = "-";
+
+		}
+		// checks if black bishop has white in check
+		else if (board[bishopRow][bishopCol] == "Bb") {
+
+			board[moveRow][moveCol] = "WK";
+
+			if (board[bishopRow - i][bishopCol + i] == "WK") {
+
+				//std::cout << "White is in check! Move" << std::endl;
+				board[moveRow][moveCol] = "-";
+				return true;
+				break;
+			}
+			board[moveRow][moveCol] = "-";
+		}
+
+		i++;
+	}
+
+	return false;
+}
+
+bool uperLeftMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, std::string board[][9]) {
+
+	int i = 1;
+
+	while (true) {
+
+		// Catches the bug of reading memeory address out of bounds
+		if (i < 0 || i >= 9) {
+			break;
+		}
+
+		// Checks if white bishop has black in check
+		if (board[bishopRow][bishopCol] == "Wb") {
+
+			board[moveRow][moveCol] = "WK";
+
+			if (board[bishopRow - i][bishopCol - i] == "BK") {
+
+				std::cout << "Black is in check! Move" << std::endl;
+				board[moveRow][moveCol] = "-";
+				return true;
+				break;
+			}
+			board[moveRow][moveCol] = "-";
+
+		}
+		// checks if black bishop has white in check
+		else if (board[bishopRow][bishopCol] == "Bb") {
+
+			board[moveRow][moveCol] = "WK";
+
+			if (board[bishopRow - i][bishopCol - i] == "WK") {
+
+				//std::cout << "White is in check! Move" << std::endl;
+				board[moveRow][moveCol] = "-";
+				return true;
+				break;
+			}
+			board[moveRow][moveCol] = "-";
+		}
+
+		i++;
+	}
+
+	return false;
+}
+
+bool lowerRightMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, std::string board[][9]) {
+
+	int i = 1;
+
+	while (true) {
+
+		// Catches the bug of reading memeory address out of bounds
+		if (i < 0 || i >= 9) {
+			break;
+		}
+
+		// Checks if white bishop has black in check
+		if (board[bishopRow][bishopCol] == "Wb") {
+
+			board[moveRow][moveCol] = "WK";
+
+			if (board[bishopRow + i][bishopCol + i] == "BK") {
+
+				std::cout << "Black is in check! Move" << std::endl;
+				board[moveRow][moveCol] = "-";
+				return true;
+				break;
+			}
+			board[moveRow][moveCol] = "-";
+
+		}
+		// checks if black bishop has white in check
+		else if (board[bishopRow][bishopCol] == "Bb") {
+
+			board[moveRow][moveCol] = "WK";
+
+			if (board[bishopRow + i][bishopCol + i] == "WK") {
+
+				//std::cout << "White is in check! Move" << std::endl;
+				board[moveRow][moveCol] = "-";
+				return true;
+				break;
+			}
+			board[moveRow][moveCol] = "-";
+		}
+
+		i++;
+	}
+
+	return false;
+}
+
 bool lowerLeftMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, std::string board[][9]){
 
 	int i = 1;
@@ -23,24 +164,33 @@ bool lowerLeftMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, 
 
 		// Checks if white bishop has black in check
 		if (board[bishopRow][bishopCol] == "Wb") {
+
+			board[moveRow][moveCol] = "WK";
+
 			if (board[bishopRow + i][bishopCol - i] == "BK") {
+
 				std::cout << "Black is in check! Move" << std::endl;
+				board[moveRow][moveCol] = "-";
 				return true;
 				break;
 			}
+			board[moveRow][moveCol] = "-";
+
 		}
 		// checks if black bishop has white in check
 		else if (board[bishopRow][bishopCol] == "Bb") {
+
 			board[moveRow][moveCol] = "WK";
 
 			if (board[bishopRow + i][bishopCol - i] == "WK") {
+
 				//std::cout << "White is in check! Move" << std::endl;
 				board[moveRow][moveCol] = "-";
 				return true;
 				break;
 			}
+			board[moveRow][moveCol] = "-";
 		}
-
 		i++;
 	}
 
@@ -59,6 +209,18 @@ bool whiteBishopCheck(int moveRow, int moveCol, std::string board[][9]) {
 				bishopCol = j;
 
 				if (lowerLeftMoveCheck(moveRow, moveCol, bishopRow, bishopCol, board)) {
+
+					return true;
+				}
+				else if (lowerRightMoveCheck(moveRow, moveCol, bishopRow, bishopCol, board)) {
+
+					return true;
+				}
+				else if (uperLeftMoveCheck(moveRow, moveCol, bishopRow, bishopCol, board)) {
+
+					return true;
+				}
+				else if (upperRightMoveCheck(moveRow, moveCol, bishopRow, bishopCol, board)) {
 
 					return true;
 				}
@@ -81,6 +243,18 @@ bool blackBishopCheck(int moveRow, int moveCol, std::string board[][9]) {
 				bishopCol = j;
 
 				if (lowerLeftMoveCheck(moveRow, moveCol, bishopRow, bishopCol, board)) {
+
+					return true;
+				}
+				else if (lowerRightMoveCheck(moveRow, moveCol, bishopRow, bishopCol, board)) {
+
+					return true;
+				}
+				else if (uperLeftMoveCheck(moveRow, moveCol, bishopRow, bishopCol, board)) {
+
+					return true;
+				}
+				else if (upperRightMoveCheck(moveRow, moveCol, bishopRow, bishopCol, board)) {
 
 					return true;
 				}
