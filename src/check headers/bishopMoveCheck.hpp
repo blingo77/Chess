@@ -25,12 +25,19 @@ bool upperRightMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol,
 		if (board[bishopRow][bishopCol] == "Wb") {
 
 			board[moveRow][moveCol] = "WK";
+			std::string notKingPiece = board[bishopRow - i][bishopCol - 1];
 
 			if (board[bishopRow - i][bishopCol + i] == "BK") {
 
 				std::cout << "Black is in check! Move" << std::endl;
 				board[moveRow][moveCol] = "-";
 				return true;
+				break;
+			}
+			else if ((notKingPiece[1] != 'K' && notKingPiece[0] == 'W') || (notKingPiece[1] != 'K' && notKingPiece[0] == 'B')) {
+
+				board[moveRow][moveCol] = "-";
+				return false;
 				break;
 			}
 			board[moveRow][moveCol] = "-";
@@ -40,12 +47,19 @@ bool upperRightMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol,
 		else if (board[bishopRow][bishopCol] == "Bb") {
 
 			board[moveRow][moveCol] = "WK";
+			std::string notKingPiece = board[bishopRow - i][bishopCol + 1];
 
 			if (board[bishopRow - i][bishopCol + i] == "WK") {
 
 				//std::cout << "White is in check! Move" << std::endl;
 				board[moveRow][moveCol] = "-";
 				return true;
+				break;
+			}
+			else if ((notKingPiece[1] != 'K' && notKingPiece[0] == 'W') || (notKingPiece[1] != 'K' && notKingPiece[0] == 'B')) {
+
+				board[moveRow][moveCol] = "-";
+				return false;
 				break;
 			}
 			board[moveRow][moveCol] = "-";
@@ -72,12 +86,19 @@ bool uperLeftMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, s
 		if (board[bishopRow][bishopCol] == "Wb") {
 
 			board[moveRow][moveCol] = "WK";
+			std::string notKingPiece = board[bishopRow - i][bishopCol - 1];
 
 			if (board[bishopRow - i][bishopCol - i] == "BK") {
 
 				std::cout << "Black is in check! Move" << std::endl;
 				board[moveRow][moveCol] = "-";
 				return true;
+				break;
+			}
+			else if ((notKingPiece[1] != 'K' && notKingPiece[0] == 'W') || (notKingPiece[1] != 'K' && notKingPiece[0] == 'B')) {
+
+				board[moveRow][moveCol] = "-";
+				return false;
 				break;
 			}
 			board[moveRow][moveCol] = "-";
@@ -87,12 +108,19 @@ bool uperLeftMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, s
 		else if (board[bishopRow][bishopCol] == "Bb") {
 
 			board[moveRow][moveCol] = "WK";
+			std::string notKingPiece = board[bishopRow - i][bishopCol - 1];
 
 			if (board[bishopRow - i][bishopCol - i] == "WK") {
 
 				//std::cout << "White is in check! Move" << std::endl;
 				board[moveRow][moveCol] = "-";
 				return true;
+				break;
+			}
+			else if ((notKingPiece[1] != 'K' && notKingPiece[0] == 'W') || (notKingPiece[1] != 'K' && notKingPiece[0] == 'B')) {
+
+				board[moveRow][moveCol] = "-";
+				return false;
 				break;
 			}
 			board[moveRow][moveCol] = "-";
@@ -119,6 +147,7 @@ bool lowerRightMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol,
 		if (board[bishopRow][bishopCol] == "Wb") {
 
 			board[moveRow][moveCol] = "WK";
+			std::string notKingPiece = board[bishopRow + i][bishopCol + 1];
 
 			if (board[bishopRow + i][bishopCol + i] == "BK") {
 
@@ -127,19 +156,33 @@ bool lowerRightMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol,
 				return true;
 				break;
 			}
+			else if ((notKingPiece[1] != 'K' && notKingPiece[0] == 'W') || (notKingPiece[1] != 'K' && notKingPiece[0] == 'B')) {
+
+				board[moveRow][moveCol] = "-";
+				return false;
+				break;
+			}
 			board[moveRow][moveCol] = "-";
 
 		}
+
 		// checks if black bishop has white in check
 		else if (board[bishopRow][bishopCol] == "Bb") {
 
 			board[moveRow][moveCol] = "WK";
+			std::string notKingPiece = board[bishopRow + i][bishopCol + 1];
 
 			if (board[bishopRow + i][bishopCol + i] == "WK") {
 
 				//std::cout << "White is in check! Move" << std::endl;
 				board[moveRow][moveCol] = "-";
 				return true;
+				break;
+			}
+			else if ((notKingPiece[1] != 'K' && notKingPiece[0] == 'W') || (notKingPiece[1] != 'K' && notKingPiece[0] == 'B')) {
+
+				board[moveRow][moveCol] = "-";
+				return false;
 				break;
 			}
 			board[moveRow][moveCol] = "-";
@@ -166,6 +209,7 @@ bool lowerLeftMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, 
 		if (board[bishopRow][bishopCol] == "Wb") {
 
 			board[moveRow][moveCol] = "WK";
+			std::string notKingPiece = board[bishopRow + i][bishopCol - 1];
 
 			if (board[bishopRow + i][bishopCol - i] == "BK") {
 
@@ -174,19 +218,32 @@ bool lowerLeftMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, 
 				return true;
 				break;
 			}
-			board[moveRow][moveCol] = "-";
+			else if ((notKingPiece[1] != 'K' && notKingPiece[0] == 'W') || (notKingPiece[1] != 'K' && notKingPiece[0] == 'B')) {
 
+				board[moveRow][moveCol] = "-";
+				return false;
+				break;
+			}
+			board[moveRow][moveCol] = "-";
 		}
+
 		// checks if black bishop has white in check
 		else if (board[bishopRow][bishopCol] == "Bb") {
 
 			board[moveRow][moveCol] = "WK";
+			std::string notKingPiece = board[bishopRow + i][bishopCol - 1];
 
 			if (board[bishopRow + i][bishopCol - i] == "WK") {
 
 				//std::cout << "White is in check! Move" << std::endl;
 				board[moveRow][moveCol] = "-";
 				return true;
+				break;
+			}
+			else if ((notKingPiece[1] != 'K' && notKingPiece[0] == 'W') || (notKingPiece[1] != 'K' && notKingPiece[0] == 'B')) {
+
+				board[moveRow][moveCol] = "-";
+				return false;
 				break;
 			}
 			board[moveRow][moveCol] = "-";

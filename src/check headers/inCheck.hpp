@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "bishopPreCheck.hpp"
+#include "rookPreCheck.hpp"
 
 bool whitePawnPreCheck(int kingRow, int kingCol, std::string board[][9]) {
 
@@ -67,6 +68,10 @@ bool whiteCheck(std::string board[][9]) {
 
 		return true;
 	}
+	else if (whiteRookPreCheck(board)) {
+
+		return true;
+	}
 	else {
 		return false;
 	}
@@ -90,9 +95,15 @@ bool blackCheck(std::string board[][9]) {
 	}
 
 	if (blackPawnPreCheck(kingRow, kingCol, board)) {
+
 		return true;
 	}
 	else if (blackBishopPreCheck(kingRow, kingCol, board)) {
+
+		return true;
+	}
+	else if (blackRookPreCheck(board)) {
+
 		return true;
 	}
 	else {
