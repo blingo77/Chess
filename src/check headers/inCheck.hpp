@@ -68,7 +68,7 @@ bool whiteCheck(std::string board[][9]) {
 
 		return true;
 	}
-	else if (whiteRookPreCheck(board)) {
+	else if (whiteRookPreCheck(kingRow, kingCol, board)) {
 
 		return true;
 	}
@@ -102,7 +102,7 @@ bool blackCheck(std::string board[][9]) {
 
 		return true;
 	}
-	else if (blackRookPreCheck(board)) {
+	else if (blackRookPreCheck(kingRow, kingCol, board)) {
 
 		return true;
 	}
