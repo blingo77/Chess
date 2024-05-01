@@ -2,6 +2,7 @@
 
 #include "../check headers/kingMoveCheck.hpp"
 #include "../check headers//bishopMoveCheck.hpp"
+#include "../check headers/rookMoveCheck.hpp"
 
 bool whiteKingMoves(int moveRow, int moveCol, int pieceRow, int pieceCol, std::string board[][9]) {
 
@@ -16,6 +17,10 @@ bool whiteKingMoves(int moveRow, int moveCol, int pieceRow, int pieceCol, std::s
 	}
 	if (whiteBishopCheck(moveRow, moveCol, board)) {
 		std::cout << "That move will put u in check" << std::endl;
+		return false;
+	}
+	if (whiteRookCheck()) {
+		std::cout << "That move will put u in check to a rook!" << std::endl;
 		return false;
 	}
 
@@ -52,6 +57,14 @@ bool blackKingMoves(int moveRow, int moveCol, int pieceRow, int pieceCol, std::s
 
 	if (blackPawnCheck(moveRow, moveCol, board)) {
 		std::cout << "That move puts you in check!" << std::endl;
+		return false;
+	}
+	if (blackBishopCheck(moveRow, moveCol, board)) {
+		std::cout << "That move will put u in check" << std::endl;
+		return false;
+	}
+	if (blackRookCheck()) {
+		std::cout << "That move will put u in check to a rook!" << std::endl;
 		return false;
 	}
 

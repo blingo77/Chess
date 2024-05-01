@@ -6,7 +6,11 @@ bool rookVerticalDownCheck(int rookRow, int rookCol, int kingRow, int kingCol, s
 
 	while (true) {
 
-		if (i < 0 || i > 8) {
+		if (i < 0 || i > 9) {
+			break;
+		}
+
+		if (rookRow + i > 8 || rookRow + i < 0) {
 			break;
 		}
 
@@ -54,7 +58,11 @@ bool rookVerticalUpCheck(int rookRow, int rookCol, int kingRow, int kingCol, std
 
 	while (true) {
 
-		if (i < 0 || i > 8) {
+		if (i < 0 || i > 9) {
+			break;
+		}
+
+		if (rookRow - i > 8 || rookRow < 0) {
 			break;
 		}
 
@@ -106,6 +114,10 @@ bool rookLHorizonalCheck(int rookRow, int rookCol, int kingRow, int kingCol, std
 			break;
 		}
 
+		if (rookCol - i > 8 || rookCol - i < 0) {
+			break;
+		}
+
 		if (board[rookRow][rookCol] == "Br") {
 
 			std::string notKingPiece = board[rookRow][rookCol - i];
@@ -151,6 +163,10 @@ bool rookRHorizontalCheck(int rookRow, int rookCol, int kingRow, int kingCol, st
 	while (true) {
 
 		if (i < 0 || i > 8) {
+			break;
+		}
+
+		if (rookCol + i > 8 || rookCol + i < 0) {
 			break;
 		}
 		
