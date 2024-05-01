@@ -21,11 +21,20 @@ bool upperRightMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol,
 			break;
 		}
 
+		// Makes sure that it isnt checking out of bounds
+		if (bishopRow - i < 0 || bishopRow + i > 8) {
+			break;
+		}
+
+		if (bishopCol - i < 0 || bishopCol + i > 8) {
+			break;
+		}
+
 		// Checks if white bishop has black in check
 		if (board[bishopRow][bishopCol] == "Wb") {
 
 			board[moveRow][moveCol] = "WK";
-			std::string notKingPiece = board[bishopRow - i][bishopCol - 1];
+			std::string notKingPiece = board[bishopRow - i][bishopCol - i];
 
 			if (board[bishopRow - i][bishopCol + i] == "BK") {
 
@@ -47,7 +56,7 @@ bool upperRightMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol,
 		else if (board[bishopRow][bishopCol] == "Bb") {
 
 			board[moveRow][moveCol] = "WK";
-			std::string notKingPiece = board[bishopRow - i][bishopCol + 1];
+			std::string notKingPiece = board[bishopRow - i][bishopCol + i];
 
 			if (board[bishopRow - i][bishopCol + i] == "WK") {
 
@@ -82,11 +91,20 @@ bool uperLeftMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, s
 			break;
 		}
 
+		// Makes sure that it isnt checking out of bounds
+		if (bishopRow - i < 0 || bishopRow - i > 8) {
+			break;
+		}
+
+		if (bishopCol - i < 0 || bishopCol - i > 8) {
+			break;
+		}
+
 		// Checks if white bishop has black in check
 		if (board[bishopRow][bishopCol] == "Wb") {
 
 			board[moveRow][moveCol] = "WK";
-			std::string notKingPiece = board[bishopRow - i][bishopCol - 1];
+			std::string notKingPiece = board[bishopRow - i][bishopCol - i];
 
 			if (board[bishopRow - i][bishopCol - i] == "BK") {
 
@@ -108,7 +126,7 @@ bool uperLeftMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, s
 		else if (board[bishopRow][bishopCol] == "Bb") {
 
 			board[moveRow][moveCol] = "WK";
-			std::string notKingPiece = board[bishopRow - i][bishopCol - 1];
+			std::string notKingPiece = board[bishopRow - i][bishopCol - i];
 
 			if (board[bishopRow - i][bishopCol - i] == "WK") {
 
@@ -143,11 +161,24 @@ bool lowerRightMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol,
 			break;
 		}
 
+		// Makes sure that it isnt checking out of bounds
+		if (bishopRow + i < 0 || bishopRow + i > 8) {
+
+			std::cout << "Break 1" << std::endl;
+			break;
+		}
+
+		if (bishopCol + i < 0 || bishopCol + i > 8) {
+
+			std::cout << "Break 2" << std::endl;
+			break;
+		}
+
 		// Checks if white bishop has black in check
 		if (board[bishopRow][bishopCol] == "Wb") {
 
 			board[moveRow][moveCol] = "WK";
-			std::string notKingPiece = board[bishopRow + i][bishopCol + 1];
+			std::string notKingPiece = board[bishopRow + i][bishopCol + i];
 
 			if (board[bishopRow + i][bishopCol + i] == "BK") {
 
@@ -170,7 +201,7 @@ bool lowerRightMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol,
 		else if (board[bishopRow][bishopCol] == "Bb") {
 
 			board[moveRow][moveCol] = "WK";
-			std::string notKingPiece = board[bishopRow + i][bishopCol + 1];
+			std::string notKingPiece = board[bishopRow + i][bishopCol + i];
 
 			if (board[bishopRow + i][bishopCol + i] == "WK") {
 
@@ -204,12 +235,21 @@ bool lowerLeftMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, 
 		if (i < 0 || i >= 9) {
 			break;
 		}
+		// Makes sure that it isnt checking out of bounds
+		if (bishopRow + i < 0 || bishopRow + i > 8) {
+			break;
+		}
+
+		if (bishopCol - i < 0 || bishopCol - i > 8) {
+			break;
+		}
+
 
 		// Checks if white bishop has black in check
 		if (board[bishopRow][bishopCol] == "Wb") {
 
 			board[moveRow][moveCol] = "WK";
-			std::string notKingPiece = board[bishopRow + i][bishopCol - 1];
+			std::string notKingPiece = board[bishopRow + i][bishopCol - i];
 
 			if (board[bishopRow + i][bishopCol - i] == "BK") {
 
@@ -231,7 +271,7 @@ bool lowerLeftMoveCheck(int moveRow, int moveCol, int bishopRow, int bishopCol, 
 		else if (board[bishopRow][bishopCol] == "Bb") {
 
 			board[moveRow][moveCol] = "WK";
-			std::string notKingPiece = board[bishopRow + i][bishopCol - 1];
+			std::string notKingPiece = board[bishopRow + i][bishopCol - i];
 
 			if (board[bishopRow + i][bishopCol - i] == "WK") {
 
