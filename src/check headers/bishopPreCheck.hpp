@@ -38,7 +38,7 @@ bool lowerLeftKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol, 
 
 			if (board[bishopRow + i][bishopCol - i] == "BK") {
 
-				std::cout << "Black is in check! Move 1" << std::endl;
+				std::cout << "Black is in check! Move" << std::endl;
 				return true;
 				break;
 			}
@@ -102,7 +102,7 @@ bool lowerRightKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol,
 
 			if (board[bishopRow + i][bishopCol + i] == "BK") {
 
-				std::cout << "Black is in check! Move 2" << std::endl;
+				std::cout << "Black is in check! Move" << std::endl;
 				return true;
 				break;
 			}
@@ -161,7 +161,7 @@ bool upperLeftKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol, 
 
 			if (board[bishopRow - i][bishopCol - i] == "BK") {
 
-				std::cout << "Black is in check! Move 3" << std::endl;
+				std::cout << "Black is in check! Move" << std::endl;
 				return true;
 				break;
 			}
@@ -219,7 +219,7 @@ bool upperRightKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol,
 			std::string notKingPiece = board[bishopRow - i][bishopCol + i];
 
 			if (board[bishopRow - i][bishopCol + i] == "BK") {
-				std::cout << "Black is in check! Move 4" << std::endl;
+				std::cout << "Black is in check! Move" << std::endl;
 				return true;
 				break;
 			}
