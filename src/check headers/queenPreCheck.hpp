@@ -240,6 +240,58 @@ bool queenUpperRightCheck(int queenRow, int queenCol , int kingRow, int kingCol,
 	return false;
 }
 
+bool queenRHorizontalCheck(int queenRow, int queenCol, int kingRow, int kingCol, std::string board[][9]) {
+
+	int i = 1;
+
+	while (true) {
+
+		if (i < 0 || i > 8) {
+			break;
+		}
+
+		if (queenRow + i > 8 || queenCol + i < 0) {
+			break;
+		}
+
+		if (board[queenRow][queenCol] == "BQ") {
+
+			std::string notKingPiece = board[queenRow][queenCol + i];
+
+			if (board[queenRow][queenCol + i] == "WK") {
+
+				std::cout << "You are in check! Move" << std::endl;
+				return true;
+				break;
+			}
+			else if ((notKingPiece[1] != 'K' && notKingPiece[0] == 'W') || (notKingPiece[1] != 'K' && notKingPiece[0] == 'B')) {
+
+				return false;
+				break;
+			}
+		}
+		else if (board[queenRow][queenCol] == "WQ") {
+
+			std::string notKingPiece = board[queenRow][queenCol + i];
+
+			if (board[queenRow][queenCol + i] == "BK") {
+
+				std::cout << "You are in check! Move" << std::endl;
+				return true;
+				break;
+			}
+			else if ((notKingPiece[1] != 'K' && notKingPiece[0] == 'W') || (notKingPiece[1] != 'K' && notKingPiece[0] == 'B')) {
+
+				return false;
+				break;
+			}
+		}
+		i++;
+	}
+
+	return false;
+}
+
 bool whiteQueenPreCheck(int kingRow, int kingCol, std::string board[][9]) {
 
 	int queenRow;
@@ -265,6 +317,10 @@ bool whiteQueenPreCheck(int kingRow, int kingCol, std::string board[][9]) {
 					return true;
 				}
 				else if (queenLowerLeftCheck(queenRow, queenCol, kingRow, kingCol, board)) {
+
+					return true;
+				}
+				else if (queenRHorizontalCheck(queenRow, queenCol, kingRow, kingCol, board)) {
 
 					return true;
 				}
@@ -300,6 +356,10 @@ bool blackQueenPreCheck(int kingRow, int kingCol, std::string board[][9]) {
 				return true;
 			}
 			else if (queenLowerLeftCheck(queenRow, queenCol, kingRow, kingCol, board)) {
+
+				return true;
+			}
+			else if (queenRHorizontalCheck(queenRow, queenCol, kingRow, kingCol, board)) {
 
 				return true;
 			}
