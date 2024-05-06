@@ -58,11 +58,11 @@ bool rookVerticalUpCheck(int rookRow, int rookCol, int kingRow, int kingCol, std
 
 	while (true) {
 
-		if (i < 0 || i > 9) {
+		if (i < 0 || i > 8) {
 			break;
 		}
 
-		if (rookRow - i > 8 || rookRow < 0) {
+		if (rookRow - i > 8 || rookRow - i < 0) {
 			break;
 		}
 

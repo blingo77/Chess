@@ -3,6 +3,7 @@
 
 #include "bishopPreCheck.hpp"
 #include "rookPreCheck.hpp"
+#include "queenPreCheck.hpp"
 
 bool whitePawnPreCheck(int kingRow, int kingCol, std::string board[][9]) {
 
@@ -72,6 +73,10 @@ bool whiteCheck(std::string board[][9]) {
 
 		return true;
 	}
+	else if (whiteQueenPreCheck(kingRow, kingCol, board)) {
+
+		return true;
+	}
 	else {
 		return false;
 	}
@@ -103,6 +108,10 @@ bool blackCheck(std::string board[][9]) {
 		return true;
 	}
 	else if (blackRookPreCheck(kingRow, kingCol, board)) {
+
+		return true;
+	}
+	else if (blackQueenPreCheck(kingRow, kingCol, board)) {
 
 		return true;
 	}
