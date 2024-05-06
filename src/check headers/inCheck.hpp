@@ -14,7 +14,7 @@ bool whitePawnPreCheck(int kingRow, int kingCol, std::string board[][9]) {
 
 	if (rightDiag == "Bp" || leftDiag == "Bp") {
 
-		std::cout << "In check" << std::endl;
+		std::cout << "White player is In check" << std::endl;
 		return true;
 	}
 	else {
@@ -57,9 +57,6 @@ bool whiteCheck(std::string board[][9]) {
 			}
 		}
 	}
-
-	std::cout << kingRow  + 1<< std::endl;
-	std::cout << kingCol + 1<< std::endl;
 
 	if (whitePawnPreCheck(kingRow, kingCol, board)) {
 

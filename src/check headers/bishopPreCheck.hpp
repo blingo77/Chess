@@ -87,13 +87,11 @@ bool lowerRightKingCheck(int bishopRow, int bishopCol, int kingRow, int kingCol,
 		// Makes sure that it isnt checking out of bounds
 		if (bishopRow + i < 0 || bishopRow + i > 8) {
 
-			std::cout << "Break 1" << std::endl;
 			break;
 		}
 
 		if (bishopCol + i < 0 || bishopCol + i > 8) {
 
-			std::cout << "Break 2" << std::endl;
 			break;
 		}
 	
