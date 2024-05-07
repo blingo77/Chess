@@ -16,12 +16,12 @@ bool queenLowerLeftCheck(int queenRow, int queenCol, int kingRow, int kingCol, s
 		}
 
 		// Makes sure that it isnt checking out of bounds
-		if (queenRow + i < 0 || queenCol + i > 8) {
+		if (queenRow + i < 0 || queenRow + i > 8) {
 
 			break;
 		}
 
-		if (queenRow - i < 0 || queenCol - i > 8) {
+		if (queenCol - i < 0 || queenCol - i > 8) {
 
 			break;
 		}
@@ -81,13 +81,15 @@ bool queenLowerRightCheck(int queenRow, int queenCol, int kingRow, int kingCol, 
 		}
 
 		// Makes sure that it isnt checking out of bounds
-		if (queenRow + i < 0 || queenCol + i > 8) {
+		if (queenRow - i < 0 || queenRow + i > 8) {
 
+			return false;
 			break;
 		}
 
-		if (queenRow + i < 0 || queenCol + i > 8) {
+		if (queenCol - i < 0 || queenCol + i > 8) {
 
+			return false;
 			break;
 		}
 
@@ -144,12 +146,12 @@ bool queenUpperLeftCheck(int queenRow, int queenCol, int kingRow, int kingCol, s
 		}
 
 		// Makes sure that it isnt checking out of bounds
-		if (queenRow - i < 0 || queenCol - i > 8) {
+		if (queenRow - i < 0 || queenRow - i > 8) {
 
 			break;
 		}
 
-		if (queenRow - i < 0 || queenCol - i > 8) {
+		if (queenCol - i < 0 || queenCol - i > 8) {
 
 			break;
 		}
@@ -453,7 +455,7 @@ bool queenRHorizontalCheck(int queenRow, int queenCol, int kingRow, int kingCol,
 
 			if (board[queenRow][queenCol + i] == "BK") {
 
-				std::cout << "You are in check! Move" << std::endl;
+				std::cout << "You are in check! Move " << std::endl;
 				return true;
 				break;
 			}

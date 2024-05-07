@@ -41,19 +41,59 @@ public:
 
 		int pieceRow;
 		int pieceCol;
+		char charPieceCol;
 		std::string piece;
 		int moveRow;
 		int moveCol;
+		char charMoveCol;
 		bool validPiece = false;
 		bool validMove = false;
 
 		while (!validPiece) {
 			do {
 				std::cout << "White Players Turn!" << std::endl;
+				std::cout << "Enter Colum: ";
+				std::cin >> charPieceCol;
+
+				if (!isalpha(charPieceCol)) {
+
+					std::cout << "Input a letter!" << std::endl;
+					pieceRow = 0;
+					pieceCol = 0;
+					continue;
+				}
+
 				std::cout << "Enter Row: ";
 				std::cin >> pieceRow;
-				std::cout << "Enter Colum: ";
-				std::cin >> pieceCol;
+
+				switch (charPieceCol) {
+				case 'a':
+					pieceCol = 1;
+					break;
+
+				case 'b':
+					pieceCol = 2;
+					break;
+
+				case 'c':
+					pieceCol = 3;
+
+				case 'd':
+					pieceCol = 4;
+
+				case 'e':
+					pieceCol = 5;
+
+				case 'f':
+					pieceCol = 6;
+
+				case 'g':
+					pieceCol = 7;
+
+				case 'h':
+					pieceCol = 8;
+				}
+
 				pieceRow--;
 				pieceCol--;
 
@@ -74,10 +114,39 @@ public:
 
 			do {
 				std::cout << "Now enter spot to move to! " << std::endl;
+				std::cout << "Enter Col to move: ";
+				std::cin >> charMoveCol;
 				std::cout << "Enter Row: ";
 				std::cin >> moveRow;
-				std::cout << "Enter Col to move: ";
-				std::cin >> moveCol;
+
+				switch (charMoveCol) {
+				case 'a':
+					moveCol = 1;
+					break;
+
+				case 'b':
+					moveCol = 2;
+					break;
+
+				case 'c':
+					moveCol = 3;
+
+				case 'd':
+					moveCol = 4;
+
+				case 'e':
+					moveCol = 5;
+
+				case 'f':
+					moveCol = 6;
+
+				case 'g':
+					moveCol = 7;
+
+				case 'h':
+					moveCol = 8;
+				}
+
 				moveRow--;
 				moveCol--;
 
@@ -218,7 +287,7 @@ private:
 								{"-", "-", "-", "-", "-", "-", "-","-", "6"},
 								{"Wp", "Wp", "Wp", "Wp", "Wp", "Wp", "Wp","Wp", "7"},
 								{"Wr", "Wk", "Wb", "WQ", "WK", "Wb", "Wk","Wr", "8"},
-								{" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", ""}};
+								{" A", " B", " C", " D", " E", " F", " G", " H", ""}};
 
 	int boardSize = sizeof(board)/sizeof(char);
 	bool running = true;

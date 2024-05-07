@@ -27,7 +27,7 @@ bool whiteKnightPreCheck(int kingRow, int kingCol, std::string board[][9]) {
 
 				if (checkRow + checkCol == 3) {
 
-					std::cout << "You are in check!" << std::endl;
+					std::cout << "You are in check 2!" << std::endl;
 
 					return true;
 				}
@@ -50,7 +50,7 @@ bool blackKnightPreCheck(int kingRow, int kingCol, std::string board[][9]) {
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 9; j++) {
 
-			if (board[i][j] == "Bk") {
+			if (board[i][j] == "Wk") {
 
 				knightRow = i;
 				knightCol = j;
@@ -65,7 +65,7 @@ bool blackKnightPreCheck(int kingRow, int kingCol, std::string board[][9]) {
 
 				if (checkRow + checkCol == 3) {
 
-					std::cout << "You are in check!" << std::endl;
+					std::cout << "You are in check 1!" << std::endl;
 
 					return true;
 				}
