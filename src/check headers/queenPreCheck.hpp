@@ -11,18 +11,20 @@ bool queenLowerLeftCheck(int queenRow, int queenCol, int kingRow, int kingCol, s
 
 		// Catches the bug of reading memeory address out of bounds
 		if (i < 0 || i > 9) {
+
 			break;
 		}
 
 		// Makes sure that it isnt checking out of bounds
 		if (queenRow + i < 0 || queenCol + i > 8) {
+
 			break;
 		}
 
 		if (queenRow - i < 0 || queenCol - i > 8) {
+
 			break;
 		}
-
 
 		// Checks if white queen has black in check
 		if (board[queenRow][queenCol] == "WQ") {
@@ -74,6 +76,7 @@ bool queenLowerRightCheck(int queenRow, int queenCol, int kingRow, int kingCol, 
 	while (true) {
 
 		if (i < 0 || i > 8) {
+
 			break;
 		}
 
@@ -136,15 +139,18 @@ bool queenUpperLeftCheck(int queenRow, int queenCol, int kingRow, int kingCol, s
 	while (true) {
 
 		if (i < 0 || i > 8) {
+
 			break;
 		}
 
 		// Makes sure that it isnt checking out of bounds
 		if (queenRow - i < 0 || queenCol - i > 8) {
+
 			break;
 		}
 
 		if (queenRow - i < 0 || queenCol - i > 8) {
+
 			break;
 		}
 
@@ -195,15 +201,18 @@ bool queenUpperRightCheck(int queenRow, int queenCol , int kingRow, int kingCol,
 	while (true) {
 
 		if (i < 0 || i > 8) {
+
 			break;
 		}
 
 		// Makes sure that it isnt checking out of bounds
 		if (queenRow - i < 0 || queenRow + i > 8) {
+
 			break;
 		}
 
 		if (queenCol - i < 0 || queenCol + i > 8) {
+
 			break;
 		}
 
@@ -251,10 +260,12 @@ bool queenVerticalDownCheck(int queenRow, int queenCol, int kingRow, int kingCol
 	while (true) {
 
 		if (i < 0 || i > 9) {
+
 			break;
 		}
 
 		if (queenRow + i > 8 || queenRow + i < 0) {
+
 			break;
 		}
 
@@ -303,10 +314,12 @@ bool queenVerticalUpCheck(int queenRow, int queenCol, int kingRow, int kingCol, 
 	while (true) {
 
 		if (i < 0 || i > 8) {
+
 			break;
 		}
 
 		if (queenRow - i > 8 || queenRow - i < 0) {
+
 			break;
 		}
 
@@ -355,10 +368,12 @@ bool queenLHorizontalCheck(int queenRow, int queenCol, int kingRow, int kingCol,
 	while (true) {
 
 		if (i < 0 || i > 8) {
+
 			break;
 		}
 
 		if (queenCol - i > 8 || queenCol - i < 0) {
+
 			break;
 		}
 
@@ -407,10 +422,12 @@ bool queenRHorizontalCheck(int queenRow, int queenCol, int kingRow, int kingCol,
 	while (true) {
 
 		if (i < 0 || i > 8) {
+
 			break;
 		}
 
 		if (queenCol + i > 8 || queenCol + i < 0) {
+
 			break;
 		}
 
