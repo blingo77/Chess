@@ -11,7 +11,6 @@ bool upperLeftCheck(int moveRow, int moveCol, int pieceRow, int pieceCol, std::s
 			break;
 		}
 		else if (board[pieceRow - i][pieceCol - i] != "-") {
-			std::cout << "bishop UL check function";
 			std::cout << "There is a piece in your way!" << std::endl;
 			return false;
 			break;
@@ -31,7 +30,6 @@ bool upperRightCheck(int moveRow, int moveCol, int pieceRow, int pieceCol, std::
 			break;
 		}
 		else if (board[pieceRow - i][pieceCol + i] != "-") {
-			std::cout << "bishop UR check function";
 			std::cout << "There is a piece in your way!" << std::endl;
 			return false;
 			break;
@@ -51,7 +49,6 @@ bool lowerLeftCheck(int moveRow, int moveCol, int pieceRow, int pieceCol, std::s
 			break;
 		}
 		else if (board[pieceRow + i][pieceCol - i] != "-") {
-			std::cout << "bishop LL check function";
 			std::cout << "There is a piece in your way!" << std::endl;
 			return false;
 			break;
@@ -72,7 +69,6 @@ bool lowerRightCheck(int moveRow, int moveCol, int pieceRow, int pieceCol, std::
 			break;
 		}
 		else if (board[pieceRow + i][pieceCol + i] != "-") {
-			std::cout << "bishop LR check function";
 			std::cout << "There is a piece in your way!" << std::endl;
 			return false;
 			break;
