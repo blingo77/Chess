@@ -27,7 +27,6 @@ bool whitePawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 		}
 		else if(enemyPiece[0] == 'B' && (moveRow == pieceRow - 1 || moveCol == pieceCol + 1)){
 
-			std::cout << board[moveRow][moveCol] << " " + enemyPiece << std::endl;
 
 			board[moveRow][moveCol] = board[pieceRow][pieceCol];
 			board[pieceRow][pieceCol] = "-";
@@ -36,7 +35,6 @@ bool whitePawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 	}
 	//LEFT KILL
 	else if (board[pieceRow - 1][pieceCol - 1] != "-" && pieceCol - 1 >= 0 ) {
-		std::cout << pieceCol - 1 << std::endl;
 		enemyPiece = board[pieceRow - 1][pieceCol - 1];
 
 		if (enemyPiece[0] == 'B' && board[moveRow][moveCol] != enemyPiece) {

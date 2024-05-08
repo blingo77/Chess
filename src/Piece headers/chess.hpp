@@ -108,21 +108,28 @@ public:
 
 				case 'c':
 					pieceCol = 3;
+					break;
 
 				case 'd':
 					pieceCol = 4;
+					break;
 
 				case 'e':
 					pieceCol = 5;
+					break;
 
 				case 'f':
 					pieceCol = 6;
+					break;
 
 				case 'g':
 					pieceCol = 7;
+					break;
 
 				case 'h':
 					pieceCol = 8;
+					break;
+
 				}
 
 				pieceRow--;
@@ -199,21 +206,27 @@ public:
 
 				case 'c':
 					moveCol = 3;
+					break;
 
 				case 'd':
 					moveCol = 4;
+					break;
 
 				case 'e':
 					moveCol = 5;
+					break;
 
 				case 'f':
 					moveCol = 6;
+					break;
 
 				case 'g':
 					moveCol = 7;
+					break;
 
 				case 'h':
 					moveCol = 8;
+					break;
 				}
 
 				moveRow--;
@@ -324,21 +337,27 @@ public:
 
 				case 'c':
 					pieceCol = 3;
+					break;
 
 				case 'd':
 					pieceCol = 4;
+					break;
 
 				case 'e':
 					pieceCol = 5;
+					break;
 
 				case 'f':
 					pieceCol = 6;
+					break;
 
 				case 'g':
 					pieceCol = 7;
+					break;
 
 				case 'h':
 					pieceCol = 8;
+					break;
 				}
 
 				pieceRow--;
@@ -415,21 +434,27 @@ public:
 
 				case 'c':
 					moveCol = 3;
+					break;
 
 				case 'd':
 					moveCol = 4;
+					break;
 
 				case 'e':
 					moveCol = 5;
+					break;
 
 				case 'f':
 					moveCol = 6;
+					break;
 
 				case 'g':
 					moveCol = 7;
+					break;
 
 				case 'h':
 					moveCol = 8;
+					break;
 				}
 
 				moveRow--;

@@ -15,7 +15,6 @@ bool whitePawnCheck(int moveRow, int moveCol, std::string board[][9]) {
 	*/
 
 	if (moveRow == 0) {
-		std::cout << "Bug";
 		moveRow = 1;
 	}
 
