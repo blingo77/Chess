@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cctype>
+#include <string>
 
 #include "pawnMoves.hpp";
 #include "knightMoves.hpp"
@@ -41,23 +42,53 @@ public:
 
 		int pieceRow;
 		int pieceCol;
-		char charPieceCol;
+		int count;
+		std::string charPieceCol;
 		std::string piece;
 		int moveRow;
 		int moveCol;
-		char charMoveCol;
+		std::string charMoveCol;
+		bool skip = false;
 		bool validPiece = false;
 		bool validMove = false;
 
 		while (!validPiece) {
 			do {
+
+				count = 0;
+				skip = false;
+
 				std::cout << "White Players Turn!" << std::endl;
 				std::cout << "Enter Colum: ";
 				std::cin >> charPieceCol;
 
-				if (!isalpha(charPieceCol)) {
+				for (int i = 0; i < charPieceCol.length(); i++) {
+					if (isalpha(charPieceCol[i])) {
+						charPieceCol[i] = tolower(charPieceCol[i]);
+					}
+				}
 
-					std::cout << "Input a letter!" << std::endl;
+				for (char i : charPieceCol) {
+
+					count++;
+
+					if (count > 1) {
+						skip = true;
+						pieceRow = 0;
+						pieceCol = 0;
+						break;
+					}
+
+					if (isdigit(i)) {
+						std::cout << " Type a letter!" << std::endl;
+						skip = true;
+						pieceRow = 0;
+						pieceCol = 0;
+						break;
+					}
+				}
+
+				if (skip) {
 					pieceRow = 0;
 					pieceCol = 0;
 					continue;
@@ -66,7 +97,7 @@ public:
 				std::cout << "Enter Row: ";
 				std::cin >> pieceRow;
 
-				switch (charPieceCol) {
+				switch (charPieceCol[0]) {
 				case 'a':
 					pieceCol = 1;
 					break;
@@ -113,13 +144,51 @@ public:
 		while(!validMove) {
 
 			do {
+
+				count = 0;
+				skip = false;
+
 				std::cout << "Now enter spot to move to! " << std::endl;
 				std::cout << "Enter Col to move: ";
 				std::cin >> charMoveCol;
+
+				for (int i = 0; i < charMoveCol.length(); i++) {
+					if (isalpha(charMoveCol[i])) {
+						charMoveCol[i] = tolower(charMoveCol[i]);
+					}
+				}
+
+				for (char i : charMoveCol) {
+
+					count++;
+
+					if (count > 1) {
+						skip = true;
+						moveRow = 0;
+						moveCol = 0;
+						break;
+					}
+
+					if (isdigit(i)) {
+						std::cout << " Type a letter!" << std::endl;
+						skip = true;
+						skip = true;
+						moveRow = 0;
+						moveCol = 0;
+						break;
+					}
+				}
+
+				if (skip) {
+					moveRow = 0;
+					moveCol = 0;
+					continue;
+				}
+
 				std::cout << "Enter Row: ";
 				std::cin >> moveRow;
 
-				switch (charMoveCol) {
+				switch (charMoveCol[0]) {
 				case 'a':
 					moveCol = 1;
 					break;
@@ -150,6 +219,14 @@ public:
 				moveRow--;
 				moveCol--;
 
+				std::string friendlyPiece = board[moveRow][moveCol];
+
+				if (friendlyPiece[0] == 'W') {
+					std::cout << "That is a friendly Piece!" << std::endl;
+					moveRow = 9;
+					moveCol = 9;
+				}
+
 			} while (moveRow < 0 || moveRow > 8 && moveCol < 0 || moveCol > 8);
 
 			if (piece[1] == 'p') {
@@ -176,22 +253,94 @@ public:
 	}
 
 	void blackMove() {
+
 		int pieceRow;
 		int pieceCol;
+		int count;
+		std::string charPieceCol;
 		std::string piece;
 		int moveRow;
 		int moveCol;
+		std::string charMoveCol;
+		bool skip = false;
 		bool validPiece = false;
 		bool validMove = false;
 
 		while (!validPiece) {
 			do {
 
+				count = 0;
+				skip = false;
+
 				std::cout << "Black Players Turn!" << std::endl;
+				std::cout << "Enter Column: ";
+				std::cin >> charPieceCol;
+
+				for (int i = 0; i < charPieceCol.length(); i++) {
+					if (isalpha(charPieceCol[i])) {
+						charPieceCol[i] = tolower(charPieceCol[i]);
+					}
+				}
+
+				for (char i : charPieceCol) {
+
+					count++;
+
+					if (count > 1) {
+						skip = true;
+						pieceRow = 9;
+						pieceCol = 9;
+						break;
+					}
+
+					if (isdigit(i)) {
+						std::cout << " Type a letter!" << std::endl;
+						skip = true;
+						pieceRow = 9;
+						pieceCol = 9;
+						break;
+					}
+				}
+
+				if (skip) {
+					std::cout << " ASd" << std::endl;
+					validPiece = false;
+					pieceRow = 9;
+					pieceCol = 9;
+					continue;
+				}
+
 				std::cout << "Enter Row: ";
 				std::cin >> pieceRow;
-				std::cout << "Enter Colum: ";
-				std::cin >> pieceCol;
+
+				switch (charPieceCol[0]) {
+				case 'a':
+					pieceCol = 1;
+					break;
+
+				case 'b':
+					pieceCol = 2;
+					break;
+
+				case 'c':
+					pieceCol = 3;
+
+				case 'd':
+					pieceCol = 4;
+
+				case 'e':
+					pieceCol = 5;
+
+				case 'f':
+					pieceCol = 6;
+
+				case 'g':
+					pieceCol = 7;
+
+				case 'h':
+					pieceCol = 8;
+				}
+
 				pieceRow--;
 				pieceCol--;
 
@@ -204,19 +353,95 @@ public:
 			}
 			else {
 				validPiece = true; 
+				std::cout << piece + " Selected" << std::endl;
+
 			}
 		}
 
 		while (!validMove) {
 			do {
 
+				count = 0;
+				skip = false;
+				charMoveCol = "";
+
 				std::cout << "Now enter spot to move to! " << std::endl;
+				std::cout << "Enter Col to move: ";
+				std::cin >> charMoveCol;
+
+				for (int i = 0; i < charMoveCol.length(); i++) {
+					if (isalpha(charMoveCol[i])) {
+						charMoveCol[i] = tolower(charMoveCol[i]);
+					}
+				}
+
+				for (char i : charMoveCol) {
+
+					count++;
+
+					if (count > 1) {
+						skip = true;
+						moveRow = 8;
+						moveCol = 8;
+						break;
+					}
+
+					if (isdigit(i)) {
+						std::cout << " Type a letter!" << std::endl;
+						skip = true;
+						moveRow = 8;
+						moveCol = 8;
+						break;
+					}
+				}
+
+				if (skip) {
+					moveRow = 8;
+					moveCol = 8;
+					continue;
+				}
+
 				std::cout << "Enter Row: ";
 				std::cin >> moveRow;
-				std::cout << "Enter Col to move: ";
-				std::cin >> moveCol;
+
+				switch (charMoveCol[0]) {
+				case 'a':
+					moveCol = 1;
+					break;
+
+				case 'b':
+					moveCol = 2;
+					break;
+
+				case 'c':
+					moveCol = 3;
+
+				case 'd':
+					moveCol = 4;
+
+				case 'e':
+					moveCol = 5;
+
+				case 'f':
+					moveCol = 6;
+
+				case 'g':
+					moveCol = 7;
+
+				case 'h':
+					moveCol = 8;
+				}
+
 				moveRow--;
 				moveCol--;
+
+				std::string friendlyPiece = board[moveRow][moveCol];
+
+				if (friendlyPiece[0] == 'B') {
+					std::cout << "That is a friendly Piece!" << std::endl;
+					moveRow = 9;
+					moveCol = 9;
+				}
 
 			} while (moveRow < 0 || moveRow > 8 && moveCol < 0 || moveCol > 8);
 

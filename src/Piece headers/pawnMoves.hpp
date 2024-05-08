@@ -31,7 +31,6 @@ bool whitePawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 
 			board[moveRow][moveCol] = board[pieceRow][pieceCol];
 			board[pieceRow][pieceCol] = "-";
-			std::cout << "in right kill func";
 			return true;
 		}
 	}
@@ -50,7 +49,6 @@ bool whitePawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 
 			board[moveRow][moveCol] = board[pieceRow][pieceCol];
 			board[pieceRow][pieceCol] = "-";
-			std::cout << "in left kill func";
 			return true;
 		}
 	}
@@ -113,7 +111,6 @@ bool blackPawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 			board[moveRow][moveCol] = board[pieceRow][pieceCol];
 			board[pieceRow][pieceCol] = "-";
 	
-			std::cout << "in right kill func";
 			return true;
 		}
 	}
@@ -131,7 +128,6 @@ bool blackPawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 
 			board[moveRow][moveCol] = board[pieceRow][pieceCol];
 			board[pieceRow][pieceCol] = "-";
-			std::cout << "in left kill func";
 			return true;
 		}
 	}
@@ -165,7 +161,6 @@ bool blackPawnMove(int moveRow, int moveCol, int pieceRow, int pieceCol, std::st
 		return false;
 	}
 
-	std::cout << "here";
 	board[moveRow][moveCol] = board[pieceRow][pieceCol];
 	board[pieceRow][pieceCol] = "-";
 

@@ -10,7 +10,6 @@ bool leftHorizontalCheck(int moveRow, int moveCol, int pieceRow, int pieceCol, s
 			break;
 		}
 		else if (board[pieceRow][pieceCol + i] != "-") {
-			std::cout << "Rook Lh check function" << std::endl;
 			std::cout << "There is a piece in your way!" << std::endl;
 			return false;
 			break;
@@ -30,7 +29,6 @@ bool rightHorizontalCheck(int moveRow, int moveCol, int pieceRow, int pieceCol, 
 			break;
 		}
 		else if (board[pieceRow][pieceCol - i] != "-") {
-			std::cout << "Rook Rh check function" << std::endl;
 			std::cout << "There is a piece in your way!" << std::endl;
 			return false;
 			break;
@@ -50,7 +48,6 @@ bool verticalUpCheck(int moveRow, int moveCol, int pieceRow, int pieceCol, std::
 			break;
 		}
 		else if (board[pieceRow - i][pieceCol] != "-") {
-			std::cout << "Rook VU check function" << std::endl;
 			std::cout << "There is a piece in your way!" << std::endl;
 			return false;
 			break;
@@ -70,7 +67,6 @@ bool verticalDownCheck(int moveRow, int moveCol, int pieceRow, int pieceCol, std
 			break;
 		}
 		else if (board[pieceRow + i][pieceCol] != "-") {
-			std::cout << "Rook Lh check function" << std::endl;
 			std::cout << "There is a piece in your way!" << std::endl;
 			return false;
 			break;
@@ -90,8 +86,7 @@ bool whiteRookMoves(int moveRow, int moveCol, int pieceRow, int pieceCol, std::s
 	if (moveSpot[0] != 'W' && moveSpot[1] != 'K') {
 
 		//Check for horizontal movement
-		std::cout << pieceRow - moveRow << std::endl;
-		std::cout << pieceCol - moveCol << std::endl;
+
 		if (rookRow == 0 && rookCol < 0) {
 
 			validCheck = leftHorizontalCheck(moveRow, moveCol, pieceRow, pieceCol, board);
@@ -137,8 +132,7 @@ bool blackRookMoves(int moveRow, int moveCol, int pieceRow, int pieceCol, std::s
 	if (moveSpot[0] != 'B' && moveSpot[1] != 'K') {
 
 		//Check for horizontal movement
-		std::cout << pieceRow - moveRow << std::endl;
-		std::cout << pieceCol - moveCol << std::endl;
+
 		if (rookRow == 0 && rookCol < 0) {
 
 			validCheck = leftHorizontalCheck(moveRow, moveCol, pieceRow, pieceCol, board);
